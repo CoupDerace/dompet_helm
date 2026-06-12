@@ -12,3 +12,22 @@ class ApiClient {
         if (token != null) 'Authorization': 'Bearer $token',
       },
     ));
+
+    debugPrint('[ApiClient] baseUrl = ${AppConstants.baseUrl}');
+
+    _dio.interceptors.add(PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
+      responseHeader: false,
+      responseBody: true,
+      error: true,
+      compact: false,
+      logPrint: (o) => debugPrint(o.toString()),
+    ));
+
+    _dio.interceptors.add(InterceptorsWrapper(
+      onError: (DioException e, handler) {
+        handler.next(e);
+      },
+    ));
+  }
