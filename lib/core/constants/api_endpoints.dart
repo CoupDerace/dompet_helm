@@ -13,7 +13,7 @@ class ApiEndpoints {
   static const String me = '$_base/auth/me';
   static const String fcmToken = '$_base/auth/fcm-token';
 
-  //OTP
+  // OTP
   static const String sendOtpFirebase = '$_base/otp/send-firebase';
   static const String sendOtpEmail = '$_base/otp/send-email';
   static const String confirmOtp = '$_base/otp/confirm';
@@ -24,5 +24,7 @@ class ApiEndpoints {
   static const String account = '$_base/account';
   static const String transactions = '$_base/account/transactions';
 
-  
+  // Payment
+  static const String topup = '$_base/topup';
+  static const String transfer = '$_base/transfer';
 }
