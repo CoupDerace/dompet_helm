@@ -10,3 +10,9 @@ class NetworkException implements Exception {
   const NetworkException([this.message = 'Tidak ada koneksi internet.']);
 }
 
+class UnauthorizedException implements Exception {
+  final String message;
+  final String? errorCode;
+  const UnauthorizedException(this.message, {this.errorCode});
+}
+
