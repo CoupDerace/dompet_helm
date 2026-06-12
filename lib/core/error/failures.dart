@@ -49,3 +49,6 @@ class CacheFailure extends Failure {
   const CacheFailure([super.message = 'Gagal mengakses penyimpanan lokal.']);
 }
 
+class UnexpectedFailure extends Failure {
+  const UnexpectedFailure([super.message = 'Terjadi kesalahan. Silakan coba lagi.']);
+}
