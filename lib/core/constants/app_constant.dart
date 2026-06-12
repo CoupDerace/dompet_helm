@@ -26,5 +26,14 @@ class AppConstants {
 
   // PIN
   static const int pinLength = 6;
+
+  // Transaction kinds
+  static const String txnTransfer = 'transfer';
+  static const String txnTopup = 'topup';
+  static const String txnPayment = 'payment';
+  static const String txnDeeplink = 'deeplink';
+  static const String txnPulsa = 'pulsa';
+  static const String txnReceived = 'received';
+
   
 }
