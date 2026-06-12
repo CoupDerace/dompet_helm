@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "163125328288",
+    "project_id": "emoney-bed38",
+    "storage_bucket": "emoney-bed38.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163125328288:android:1cc284c0498eaa29b70cc5",
+        "android_client_info": {
+          "package_name": "com.emoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163125328288-kejohp6esv23u12ei9t2urlaem90ce13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXXrMvVAIKtxQ1wAXqNNxKXEs6i6abngc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163125328288-kejohp6esv23u12ei9t2urlaem90ce13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163125328288:android:2a985070dbd5f0ddb70cc5",
+        "android_client_info": {
+          "package_name": "com.example.dompet_helm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163125328288-kejohp6esv23u12ei9t2urlaem90ce13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXXrMvVAIKtxQ1wAXqNNxKXEs6i6abngc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163125328288-kejohp6esv23u12ei9t2urlaem90ce13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
