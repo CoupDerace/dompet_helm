@@ -20,5 +20,9 @@ class AppConstants {
   static const String twoFaTotp = 'totp';
   static const String twoFaNotif = 'notif';
 
+  // OTP
+  static const int otpLength = 6;
+  static const int otpResendSeconds = 60;
+
   
 }
