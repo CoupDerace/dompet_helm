@@ -8,5 +8,11 @@ class AppConstants {
   static const int connectTimeout = 30;
   static const int receiveTimeout = 30;
 
-  
+  // Secure Storage Keys
+  static const String kJwtToken = 'jwt_token';
+  static const String kUserData = 'user_data';
+  static const String k2faMethod = 'twofa_method';
+  static const String kFcmToken = 'fcm_token';
+  static const String kAuthVerified = 'auth_verified';
+
 }
