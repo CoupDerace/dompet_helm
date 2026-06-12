@@ -16,3 +16,7 @@ class UnauthorizedException implements Exception {
   const UnauthorizedException(this.message, {this.errorCode});
 }
 
+class InvalidOtpException implements Exception {
+  final String message;
+  const InvalidOtpException([this.message = 'Kode OTP tidak valid.']);
+}
