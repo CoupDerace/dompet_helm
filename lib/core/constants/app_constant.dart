@@ -24,5 +24,7 @@ class AppConstants {
   static const int otpLength = 6;
   static const int otpResendSeconds = 60;
 
+  // PIN
+  static const int pinLength = 6;
   
 }
