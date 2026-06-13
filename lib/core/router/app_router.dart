@@ -107,5 +107,12 @@ class AppRouter {
               );
             },
           ),
-          
+          GoRoute(path: '/payment', builder: (_, __) => const PaymentQrPage()),
+          GoRoute(
+            path: '/pin',
+            builder: (_, state) {
+              final extra = (state.extra as Map<String, dynamic>?) ?? {};
+              return _withPayment(PinPage(flowData: extra));
+            },
+          ),
 }
