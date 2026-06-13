@@ -41,4 +41,18 @@ sl.registerLazySingleton<AccountRepository>(
 sl.registerLazySingleton<PaymentRepository>(
   () => PaymentRepositoryImpl(sl()),
 );
+
+// Usecase - Auth
+sl.registerLazySingleton(() => VerifyFirebaseTokenUsecase(sl()));
+sl.registerLazySingleton(() => RegisterWithOtpUsecase(sl()));
+sl.registerLazySingleton(() => VerifyEmailOtpUsecase(sl()));
+sl.registerLazySingleton(() => GetMeUsecase(sl()));
+sl.registerLazySingleton(() => LogoutUsecase(sl()));
+sl.registerLazySingleton(() => SendOtpFirebaseUsecase(sl()));
+sl.registerLazySingleton(() => SendOtpEmailUsecase(sl()));
+sl.registerLazySingleton(() => ConfirmOtpUsecase(sl()));
+sl.registerLazySingleton(() => RegisterTotpUsecase(sl()));
+sl.registerLazySingleton(() => VerifyTotpUsecase(sl()));
+
+
 }
