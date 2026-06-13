@@ -12,4 +12,15 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
   final ApiClient _client;
   PaymentRemoteDatasourceImpl(this._client);
 
+  @override
+  Future<({double balance, double amount})> topup(double amount) async {
+    final response = await _client.post(ApiEndpoints.topup, data: {'amount': amount});
+    final data = response['data'] as Map<String, dynamic>;
+    return (
+      balance: (data['balance'] as num).toDouble(),
+      amount: (data['amount'] as num).toDouble(),
+    );
+  }
+
+  
 }
