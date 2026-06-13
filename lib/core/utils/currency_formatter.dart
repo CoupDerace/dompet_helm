@@ -6,5 +6,9 @@ class CurrencyFormatter {
     return withSymbol ? 'Rp$formatted' : formatted;
   }
 
+  static String formatInt(int amount, {bool withSymbol = true}) {
+    return format(amount.toDouble(), withSymbol: withSymbol);
+  }
+
   
 }
