@@ -83,4 +83,11 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<String?> getSavedToken() => _local.getToken();
+
+  @override
+  Future<UserEntity?> getSavedUser() async {
+    final json = await _local.getUserJson();
+    if (json == null) return null;
+    return UserModel.fromJsonString(json);
+  }
 }
