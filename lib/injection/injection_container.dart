@@ -35,4 +35,7 @@ sl.registerLazySingleton<AuthRepository>(
 sl.registerLazySingleton<OtpRepository>(
   () => OtpRepositoryImpl(sl(), sl()),
 );
+sl.registerLazySingleton<AccountRepository>(
+  () => AccountRepositoryImpl(sl()),
+);
 }
