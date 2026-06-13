@@ -22,4 +22,7 @@ class TransactionEntity extends Equatable {
   });
 
   bool get isCredit => type == TransactionType.credit;
+  double get signedAmount => isCredit ? amount : -amount;
+
+  
 }
