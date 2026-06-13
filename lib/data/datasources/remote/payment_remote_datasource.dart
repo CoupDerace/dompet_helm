@@ -28,5 +28,12 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
     required String description,
     required String otpCode,
     required String otpType,
-  })
+  }) async {
+    final response = await _client.post(ApiEndpoints.transfer, data: {
+      'amount': amount,
+      'description': description,
+      'otp_code': otpCode,
+      'otp_type': otpType,
+    });
+    final data = response['data'] as Map<String, dynamic>;
 }
