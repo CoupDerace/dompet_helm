@@ -10,5 +10,5 @@ class CurrencyFormatter {
     return format(amount.toDouble(), withSymbol: withSymbol);
   }
 
-  
+  static String maskBalance() => 'Rp • • • • • •';
 }
