@@ -67,4 +67,12 @@ Future<void> init() async {
         logout: sl(),
         authRepo: sl(),
       ));
+
+      sl.registerFactory(() => OtpBloc(
+        sendFirebase: sl(),
+        sendEmail: sl(),
+        confirm: sl(),
+        registerTotp: sl(),
+        verifyTotp: sl(),
+      ));
 }
