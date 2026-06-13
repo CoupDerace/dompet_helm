@@ -16,5 +16,6 @@ class TotpSetupEntity extends Equatable {
 }
 
 class OtpSentEntity extends Equatable {
-  
+  final String otpType;
+  final int expiresIn;
 }
