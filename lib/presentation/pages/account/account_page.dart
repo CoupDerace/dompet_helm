@@ -208,3 +208,62 @@ class AccountPage extends StatelessWidget {
     );
   }
 }
+
+class _Row extends StatelessWidget {
+  final IconData icon;
+  final String tone;
+  final String title;
+  final String? subtitle;
+  final VoidCallback onTap;
+  final Widget? right;
+
+  const _Row({
+    required this.icon,
+    required this.tone,
+    required this.title,
+    this.subtitle,
+    required this.onTap,
+    this.right,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: Row(
+          children: [
+            FeatureIcon(icon: icon, tone: tone, size: 42, iconSize: 20),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title,
+                      style: const TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 14.5,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.ink,
+                      )),
+                  if (subtitle != null) ...[
+                    const SizedBox(height: 2),
+                    Text(subtitle!,
+                        style: const TextStyle(
+                          fontFamily: 'PlusJakartaSans',
+                          fontSize: 12.5,
+                          color: AppColors.slate400,
+                        )),
+                  ],
+                ],
+              ),
+            ),
+            right ?? const Icon(Icons.chevron_right_rounded, size: 18, color: AppColors.slate400),
+          ],
+        ),
+      ),
+    );
+  }
+}
