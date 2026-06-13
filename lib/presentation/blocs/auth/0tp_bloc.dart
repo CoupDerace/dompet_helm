@@ -95,4 +95,16 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
     on<OtpVerifyTotp>(_onVerifyTotp);
     on<OtpReset>((_, emit) => emit(OtpInitial()));
   }
+
+  Future<void> _onSendFirebase(OtpSendFirebase _, Emitter<OtpState> emit) async {
+    emit(OtpLoading());
+    try {
+      final entity = await _sendFirebase();
+      emit(OtpSent(entity));
+    } on ServerFailure catch (e) {
+      emit(OtpError(e.message));
+    } on NetworkFailure catch (e) {
+      emit(OtpError(e.message));
+    }
+  }
 }
