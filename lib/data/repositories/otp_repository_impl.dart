@@ -13,4 +13,15 @@ class OtpRepositoryImpl implements OtpRepository {
       throw NetworkFailure(e.message);
     }
   }
+
+  @override
+  Future<OtpSentEntity> sendOtpEmail() async {
+    try {
+      return await _remote.sendOtpEmail();
+    } on ServerException catch (e) {
+      throw ServerFailure(e.message);
+    } on NetworkException catch (e) {
+      throw NetworkFailure(e.message);
+    }
+  }
 }
