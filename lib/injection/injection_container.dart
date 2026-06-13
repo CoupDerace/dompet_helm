@@ -9,5 +9,10 @@ Future<void> init() async {
   // Core
   sl.registerLazySingleton<ApiClient>(() => ApiClient());
 
-  
+  // Local Data Source
+  sl.registerLazySingleton<SecureStorageDatasource>(
+  () => SecureStorageDatasourceImpl(secureStorage),
+);
+
+
 }
