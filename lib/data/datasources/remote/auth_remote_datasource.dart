@@ -40,4 +40,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     _client.setAuthToken(token);
     return (user: user, token: token);
   }
+
+  @override
+  Future<void> verifyEmailOtp(String code) async {
+    await _client.post(ApiEndpoints.verifyEmailOtp, data: {'code': code});
+  }
+
+  
 }
