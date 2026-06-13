@@ -12,4 +12,7 @@ class PaymentResultEntity extends Equatable {
     required this.lines,
     required this.kind,
   });
+
+  @override
+  List<Object?> get props => [title, subtitle, amount, lines, kind];
 }
