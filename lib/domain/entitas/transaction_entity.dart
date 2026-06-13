@@ -19,5 +19,7 @@ class TransactionEntity extends Equatable {
     required this.balanceBefore,
     required this.balanceAfter,
     required this.createdAt,
-  })
+  });
+
+  bool get isCredit => type == TransactionType.credit;
 }
