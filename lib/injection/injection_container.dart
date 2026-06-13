@@ -91,3 +91,7 @@ Future<void> init() async {
 void setApiToken(String token) {
   sl<ApiClient>().setAuthToken(token);
 }
+
+void clearApiToken() {
+  sl<ApiClient>().clearAuthToken();
+}
