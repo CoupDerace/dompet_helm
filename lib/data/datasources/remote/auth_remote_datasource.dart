@@ -51,4 +51,9 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     final response = await _client.get(ApiEndpoints.me);
     return UserModel.fromJson(response['data'] as Map<String, dynamic>);
   }
+
+  @override
+  Future<void> updateFcmToken(String fcmToken) async {
+    await _client.put(ApiEndpoints.fcmToken, data: {'fcm_token': fcmToken});
+  }
 }
