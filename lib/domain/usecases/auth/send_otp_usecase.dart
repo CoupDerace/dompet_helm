@@ -24,3 +24,9 @@ class RegisterTotpUsecase {
   RegisterTotpUsecase(this._repository);
   Future<TotpSetupEntity> call() => _repository.registerTotp();
 }
+
+class VerifyTotpUsecase {
+  final OtpRepository _repository;
+  VerifyTotpUsecase(this._repository);
+  Future<bool> call(String code) => _repository.verifyTotp(code);
+}
