@@ -14,7 +14,10 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
 
   @override
   Future<({double balance, double amount})> topup(double amount) async {
-    final response = await _client.post(ApiEndpoints.topup, data: {'amount': amount});
+    final response = await _client.post(
+      ApiEndpoints.topup,
+      data: {'amount': amount},
+    );
     final data = response['data'] as Map<String, dynamic>;
     return (
       balance: (data['balance'] as num).toDouble(),
@@ -29,11 +32,25 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
     required String otpCode,
     required String otpType,
   }) async {
-    final response = await _client.post(ApiEndpoints.transfer, data: {
-      'amount': amount,
-      'description': description,
-      'otp_code': otpCode,
-      'otp_type': otpType,
-    });
+    final response = await _client.post(
+      ApiEndpoints.transfer,
+      data: {
+        'amount': amount,
+        'description': description,
+        'otp_code': otpCode,
+        'otp_type': otpType,
+      },
+    );
     final data = response['data'] as Map<String, dynamic>;
+    return TransferResultEntity(
+      transactionId: (data['transaction_id'] as num).toInt(),
+      amount: (data['amount'] as num).toDouble(),
+      description: data['description'] as String? ?? '',
+      balanceBefore: (data['balance_before'] as num).toDouble(),
+      balanceAfter: (data['balance_after'] as num).toDouble(),
+      createdAt:
+          DateTime.tryParse(data['created_at'] as String? ?? '') ??
+          DateTime.now(),
+    );
+  }
 }
