@@ -7,4 +7,15 @@ class UserEntity extends Equatable {
   final bool emailVerified;
   final bool totpEnabled;
   final String? twoFaMethod;
+
+  const UserEntity({
+    required this.id,
+    required this.firebaseUid,
+    required this.email,
+    required this.name,
+    required this.role,
+    required this.emailVerified,
+    required this.totpEnabled,
+    this.twoFaMethod,
+  });
 }
