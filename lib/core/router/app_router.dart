@@ -132,7 +132,7 @@ class AppRouter {
           GoRoute(path: '/merchant', builder: (_, __) => _withPayment(const MerchantCheckoutPage())),
         ],
       );
-      
+
   static Widget _withAuth(Widget child) {
     return BlocProvider(create: (_) => sl<AuthBloc>(), child: child);
   }
@@ -141,6 +141,20 @@ class AppRouter {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (_) => sl<AuthBloc>()),
       BlocProvider(create: (_) => sl<OtpBloc>()),
+    ], child: child);
+  }
+  static Widget _withAccount(Widget child) {
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (_) => sl<AuthBloc>()),
+      BlocProvider(create: (_) => sl<AccountBloc>()),
+    ], child: child);
+  }
+
+  static Widget _withPayment(Widget child) {
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (_) => sl<AuthBloc>()),
+      BlocProvider(create: (_) => sl<AccountBloc>()),
+      BlocProvider(create: (_) => sl<PaymentBloc>()),
     ], child: child);
   }
 }
