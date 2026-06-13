@@ -10,4 +10,7 @@ class AccountEntity extends Equatable {
     required this.balance,
     required this.createdAt,
   });
+
+  @override
+  List<Object?> get props => [id, userId, balance, createdAt];
 }
