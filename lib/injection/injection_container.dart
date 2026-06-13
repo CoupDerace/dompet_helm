@@ -75,4 +75,9 @@ Future<void> init() async {
         registerTotp: sl(),
         verifyTotp: sl(),
       ));
+
+      sl.registerFactory(() => AccountBloc(
+        getAccount: sl(),
+        getTransactions: sl(),
+      ));
 }
