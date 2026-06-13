@@ -61,5 +61,17 @@ class AppRouter {
               return _withAccount(Scaffold(
                 body: child,
                 bottomNavigationBar: AppTabBar(
-                   
+                  active: tab,
+                  onTab: (t) {
+                    switch (t) {
+                      case 'history': context.go('/history'); break;
+                      case 'promo': context.go('/promo'); break;
+                      case 'akun': context.go('/akun'); break;
+                      default: context.go('/home');
+                    }
+                  },
+                  onScan: () => context.go('/payment'),
+                ),
+              ));
+            },
 }
