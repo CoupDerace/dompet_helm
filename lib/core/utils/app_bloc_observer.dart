@@ -13,5 +13,14 @@ class AppBlocObserver extends BlocObserver {
     debugPrint('[BLoC] EVENT   ${bloc.runtimeType} → $event');
   }
 
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onC
+    hange(bloc, change);
+    debugPrint('[BLoC] STATE   ${bloc.runtimeType}\n'
+        '         current : ${change.currentState.runtimeType}\n'
+        '         next    : ${change.nextState.runtimeType}');
+  }
+
   
 }
