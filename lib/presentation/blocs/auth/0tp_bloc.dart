@@ -70,5 +70,9 @@ class OtpError extends OtpState {
 }
 
 class OtpBloc extends Bloc<OtpEvent, OtpState> {
-  
+  final SendOtpFirebaseUsecase _sendFirebase;
+  final SendOtpEmailUsecase _sendEmail;
+  final ConfirmOtpUsecase _confirm;
+  final RegisterTotpUsecase _registerTotp;
+  final VerifyTotpUsecase _verifyTotp;
 }
