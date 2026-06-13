@@ -24,5 +24,13 @@ class TransferResultEntity extends Equatable{
   final double balanceBefore;
   final double balanceAfter;
   final DateTime createdAt;
-  
+
+  const TransferResultEntity({
+    required this.transactionId,
+    required this.amount,
+    required this.description,
+    required this.balanceBefore,
+    required this.balanceAfter,
+    required this.createdAt,
+  });
 }
