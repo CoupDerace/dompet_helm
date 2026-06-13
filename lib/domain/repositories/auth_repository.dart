@@ -7,6 +7,6 @@ abstract class AuthRepository {
   Future<void> logout();
   Future<String?> getSavedToken();
   Future<UserEntity?> getSavedUser();
-
-
+  Future<void> setAuthVerified(bool verified);
+  Future<bool> isAuthVerified();
 }
