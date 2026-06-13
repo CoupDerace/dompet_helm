@@ -72,6 +72,6 @@ class SecureStorageDatasourceImpl implements SecureStorageDatasource {
 
   @override
   Future<void> clearAll() async {
-    
+    await _storage.deleteAll();
   }
 }
