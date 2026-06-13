@@ -1,0 +1,3 @@
+class UserEntity extends Equatable {
+  
+}
