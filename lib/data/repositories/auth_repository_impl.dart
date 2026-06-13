@@ -74,4 +74,12 @@ class AuthRepositoryImpl implements AuthRepository {
     await _local.clearAll();
     _remote.clearAuthToken();
   }
+
+  @override
+  Future<void> setAuthVerified(bool verified) => _local.saveAuthVerified(verified);
+
+  @override
+  Future<bool> isAuthVerified() => _local.getAuthVerified();
+
+  
 }
