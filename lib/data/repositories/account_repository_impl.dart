@@ -1,0 +1,3 @@
+class AccountRepositoryImpl implements AccountRepository {
+  
+}
