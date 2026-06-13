@@ -1,0 +1,3 @@
+class PaymentResultEntity extends Equatable {
+  
+}
