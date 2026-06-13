@@ -1,0 +1,3 @@
+class OtpRepositoryImpl implements OtpRepository {
+  
+}
