@@ -18,4 +18,6 @@ class UserEntity extends Equatable {
     required this.totpEnabled,
     this.twoFaMethod,
   });
+
+  String get firstName => name.split(' ').first;
 }
