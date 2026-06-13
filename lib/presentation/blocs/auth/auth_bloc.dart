@@ -127,4 +127,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await _logout();
     emit(AuthUnauthenticated());
   }
+  
+  Future<void> _onUpdateFcm(AuthUpdateFcmToken event, Emitter<AuthState> emit) async {
+    await _authRepo.updateFcmToken(event.fcmToken);
+  }
 }
