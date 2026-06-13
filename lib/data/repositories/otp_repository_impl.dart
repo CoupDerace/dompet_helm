@@ -24,4 +24,20 @@ class OtpRepositoryImpl implements OtpRepository {
       throw NetworkFailure(e.message);
     }
   }
+
+  @override
+  Future<void> confirmOtp({required String code, required String otpType}) async {
+    try {
+      await _remote.confirmOtp(code: code, otpType: otpType);
+      await _authRepo.setAuthVerified(true);
+    } on InvalidOtpException catch (e) {
+      throw InvalidOtpFailure(e.message);
+    } on ServerException catch (e) {
+      throw ServerFailure(e.message);
+    } on NetworkException catch (e) {
+      throw NetworkFailure(e.message);
+    }
+  }
+
+  
 }
