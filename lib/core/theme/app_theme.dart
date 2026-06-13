@@ -13,6 +13,7 @@ class AppTheme{
         background: AppColors.bg,
         error: AppColors.red,
       ),
+      scaffoldBackgroundColor: AppColors.bg,
     )
   }
 }
