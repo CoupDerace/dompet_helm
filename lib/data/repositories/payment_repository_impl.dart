@@ -19,5 +19,12 @@ class PaymentRepositoryImpl implements PaymentRepository {
     required String description,
     required String otpCode,
     required String otpType,
-  })
+  }) async {
+    try {
+      return await _remote.transfer(
+        amount: amount,
+        description: description,
+        otpCode: otpCode,
+        otpType: otpType,
+      );
 }
