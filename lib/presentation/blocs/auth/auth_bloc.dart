@@ -118,6 +118,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthError(e.message));
     } on NetworkFailure catch (e) {
       emit(AuthError(e.message));
+    } atch (e) {
+      emit(AuthError('Terjadi kesalahan. Silakan coba lagi.'));
     }
   }
 }
