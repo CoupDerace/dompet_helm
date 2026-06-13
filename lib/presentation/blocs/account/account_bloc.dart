@@ -35,4 +35,14 @@ class AccountError extends AccountState {
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final GetAccountUsecase _getAccount;
   final GetTransactionsUsecase _getTransactions;
+
+  AccountBloc({
+    required GetAccountUsecase getAccount,
+    required GetTransactionsUsecase getTransactions,
+  })  : _getAccount = getAccount,
+        _getTransactions = getTransactions,
+        super(AccountInitial()) {
+    on<AccountLoadRequested>(_onLoad);
+    on<AccountRefreshRequested>(_onLoad);
+  }
 }
