@@ -84,5 +84,28 @@ class AppRouter {
 
           GoRoute(path: '/topup', builder: (_, __) => _withPayment(const TopUpPage())),
           GoRoute(path: '/transfer', builder: (_, __) => const TransferPage()),
-
+          GoRoute(
+            path: '/transfer/amount',
+            builder: (_, state) {
+              final extra = state.extra as Map<String, dynamic>;
+              return _withAccount(TransferAmountPage(
+                recipient: extra['recipient'] as Map<String, dynamic>,
+                channel: extra['channel'] as String,
+              ));
+            },
+          ),
+          GoRoute(
+            path: '/transfer/confirm',
+            builder: (_, state) {
+              final extra = state.extra as Map<String, dynamic>;
+              return TransferConfirmPage(
+                recipient: extra['recipient'] as Map<String, dynamic>,
+                channel: extra['channel'] as String,
+                amount: (extra['amount'] as num).toDouble(),
+                note: extra['note'] as String? ?? '',
+                fee: (extra['fee'] as num? ?? 0).toDouble(),
+              );
+            },
+          ),
+          
 }
