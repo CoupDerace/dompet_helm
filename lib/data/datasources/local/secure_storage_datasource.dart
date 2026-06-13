@@ -26,3 +26,17 @@ class SecureStorageDatasourceImpl implements SecureStorageDatasource {
       throw const CacheException('Gagal menyimpan token.');
     }
   }
+
+  @override
+  Future<String?> getToken() async {
+    try {
+      return await _storage.read(key: AppConstants.kJwtToken);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  @override
+  Future<void> deleteToken() async {
+    await _storage.delete(key: AppConstants.kJwtToken);
+  }
