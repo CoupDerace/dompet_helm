@@ -22,5 +22,11 @@ class PaymentRemoteDatasourceImpl implements PaymentRemoteDatasource {
     );
   }
 
-  
+  @override
+  Future<TransferResultEntity> transfer({
+    required double amount,
+    required String description,
+    required String otpCode,
+    required String otpType,
+  })
 }
