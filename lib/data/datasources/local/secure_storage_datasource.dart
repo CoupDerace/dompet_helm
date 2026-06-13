@@ -58,3 +58,14 @@ class SecureStorageDatasourceImpl implements SecureStorageDatasource {
   Future<String?> getUserJson() async {
     return _storage.read(key: AppConstants.kUserData);
   }
+
+  @override
+  Future<void> saveAuthVerified(bool verified) async {
+    await _storage.write(key: AppConstants.kAuthVerified, value: verified.toString());
+  }
+
+  @override
+  Future<bool> getAuthVerified() async {
+    final value = await _storage.read(key: AppConstants.kAuthVerified);
+    return value == 'true';
+  }
