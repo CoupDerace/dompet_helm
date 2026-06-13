@@ -112,6 +112,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try{
       final result = await _verifyToken(event.firebaseToken);
       emit(AuthNeedsVerification(result.user, result.token));
+    } on AuthFailure catch (e) {
+      emit(AuthError(e.message));
+    } on ServerFailure catch (e) {
+      emit(AuthError(e.message));
+    } on NetworkFailure catch (e) {
+      emit(AuthError(e.message));
     }
   }
 }
