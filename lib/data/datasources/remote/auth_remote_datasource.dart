@@ -46,5 +46,9 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     await _client.post(ApiEndpoints.verifyEmailOtp, data: {'code': code});
   }
 
-  
+  @override
+  Future<UserModel> getMe() async {
+    final response = await _client.get(ApiEndpoints.me);
+    return UserModel.fromJson(response['data'] as Map<String, dynamic>);
+  }
 }
