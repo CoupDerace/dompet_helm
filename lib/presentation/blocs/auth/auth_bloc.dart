@@ -82,6 +82,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthCheckRequested event,
     Emitter<AuthState> emit,
   ) async {
-    
+    emit(AuthLoading());
+    final token = await _authRepo.getSavedToken();
+    if (token == null) {
+      emit(AuthUnauthenticated());
+      return;
+    }
   }
 }
