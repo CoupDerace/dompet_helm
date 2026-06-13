@@ -27,4 +27,6 @@ class PaymentRepositoryImpl implements PaymentRepository {
         otpCode: otpCode,
         otpType: otpType,
       );
+    } on InvalidOtpException catch (e) {
+      throw InvalidOtpFailure(e.message);
 }
