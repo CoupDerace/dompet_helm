@@ -87,5 +87,17 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     on<PaymentReset>((_, emit) => emit(PaymentInitial()));
   }
 
+Future<void> _onTopup(PaymentTopupRequested event, Emitter<PaymentState> emit) async {
+    emit(PaymentLoading());
+    try {
+      final result = await _topup(event.amount);
+      emit(PaymentTopupSuccess(balance: result.balance, amount: result.amount));
+    } on ServerFailure catch (e) {
+      emit(PaymentError(e.message));
+    } on NetworkFailure catch (e) {
+      emit(PaymentError(e.message));
+    }
+  }
+
   
 }
