@@ -12,4 +12,15 @@ class AccountRepositoryImpl implements AccountRepository {
       throw NetworkFailure(e.message);
     }
   }
+
+  @override
+  Future<List<TransactionEntity>> getTransactions() async {
+    try {
+      return await _remote.getTransactions();
+    } on ServerException catch (e) {
+      throw ServerFailure(e.message);
+    } on NetworkException catch (e) {
+      throw NetworkFailure(e.message);
+    }
+  }
 }
