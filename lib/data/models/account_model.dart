@@ -8,4 +8,8 @@ class AccountModel extends AccountEntity {
     required super.createdAt,
   });
 
-  
+  factory AccountModel.fromJson(Map<String, dynamic> json) {
+    return AccountModel(
+    );
+  }
+}
