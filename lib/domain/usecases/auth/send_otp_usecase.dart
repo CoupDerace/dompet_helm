@@ -18,3 +18,9 @@ class ConfirmOtpUsecase {
   Future<void> call({required String code, required String otpType}) =>
       _repository.confirmOtp(code: code, otpType: otpType);
 }
+
+class RegisterTotpUsecase {
+  final OtpRepository _repository;
+  RegisterTotpUsecase(this._repository);
+  Future<TotpSetupEntity> call() => _repository.registerTotp();
+}
