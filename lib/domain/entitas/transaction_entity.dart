@@ -10,5 +10,7 @@ class TransactionEntity extends Equatable {
   final double balanceAfter;
   final DateTime createdAt;
 
-  
+  const TransactionEntity({
+    
+  })
 }
