@@ -122,4 +122,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthError('Terjadi kesalahan. Silakan coba lagi.'));
     }
   }
+
+  Future<void> _onLogout(AuthLogoutRequested event, Emitter<AuthState> emit) async {
+    await _logout();
+    emit(AuthUnauthenticated());
+  }
 }
