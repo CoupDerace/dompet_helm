@@ -18,5 +18,11 @@ class PaymentResultEntity extends Equatable {
 }
 
 class TransferResultEntity extends Equatable{
+  final int transactionId;
+  final double amount;
+  final String description;
+  final double balanceBefore;
+  final double balanceAfter;
+  final DateTime createdAt;
   
 }
