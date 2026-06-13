@@ -49,3 +49,12 @@ class SecureStorageDatasourceImpl implements SecureStorageDatasource {
   Future<String?> get2faMethod() async {
     return _storage.read(key: AppConstants.k2faMethod);
   }
+
+  Future<void> saveUserJson(String json) async {
+    await _storage.write(key: AppConstants.kUserData, value: json);
+  }
+
+  @override
+  Future<String?> getUserJson() async {
+    return _storage.read(key: AppConstants.kUserData);
+  }
