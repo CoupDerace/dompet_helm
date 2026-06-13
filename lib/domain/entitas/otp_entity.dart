@@ -9,5 +9,9 @@ class TotpSetupEntity extends Equatable {
     required this.qrCode,
     required this.issuer,
     required this.account,
-  })
+  });
+
+  @override
+  List<Object?> get props => [secret, qrCode, issuer, account];
 }
+
