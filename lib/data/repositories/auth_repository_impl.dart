@@ -68,4 +68,10 @@ class AuthRepositoryImpl implements AuthRepository {
       // Non-critical, silently ignore
     }
   }
+
+  @override
+  Future<void> logout() async {
+    await _local.clearAll();
+    _remote.clearAuthToken();
+  }
 }
