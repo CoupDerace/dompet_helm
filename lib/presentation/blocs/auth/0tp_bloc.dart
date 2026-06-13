@@ -107,4 +107,18 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
       emit(OtpError(e.message));
     }
   }
+
+  Future<void> _onSendEmail(OtpSendEmail _, Emitter<OtpState> emit) async {
+    emit(OtpLoading());
+    try {
+      final entity = await _sendEmail();
+      emit(OtpSent(entity));
+    } on ServerFailure catch (e) {
+      emit(OtpError(e.message));
+    } on NetworkFailure catch (e) {
+      emit(OtpError(e.message));
+    }
+  }
+
+  
 }
