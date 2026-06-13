@@ -74,4 +74,7 @@ class AppRouter {
                 ),
               ));
             },
+            routes: [
+              GoRoute(path: '/home', builder: (_, __) => const HomePage()),
+              
 }
