@@ -15,4 +15,13 @@ class AccountRemoteDatasourceImpl implements AccountRemoteDatasource {
     return AccountModel.fromJson(response['data'] as Map<String, dynamic>);
   }
 
-  
+  @override
+
+  Future<List<TransactionModel>> getTransactions() async {
+    final response = await _client.get(ApiEndpoints.transactions);
+    final list = response['data'] as List<dynamic>;
+    return list
+        .map((e) => TransactionModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+}
