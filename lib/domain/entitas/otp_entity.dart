@@ -20,4 +20,7 @@ class OtpSentEntity extends Equatable {
   final int expiresIn;
 
   const OtpSentEntity({required this.otpType, required this.expiresIn});
+
+   @override
+  List<Object?> get props => [otpType, expiresIn];
 }
