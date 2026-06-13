@@ -12,4 +12,5 @@ class UserModel extends UserEntity {
     super.twoFaMethod,
   });
 
-  
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+  }
