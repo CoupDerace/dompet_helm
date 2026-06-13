@@ -27,4 +27,17 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     _client.setAuthToken(token);
     return (user: user, token: token);
   }
+
+  @override
+  Future<({UserModel user, String token})> registerWithOtp(String firebaseToken) async {
+    final response = await _client.post(
+      ApiEndpoints.register,
+      data: {'firebase_token': firebaseToken},
+    );
+    final data = response['data'] as Map<String, dynamic>;
+    final token = data['access_token'] as String;
+    final user = UserModel.fromJson(data['user'] as Map<String, dynamic>);
+    _client.setAuthToken(token);
+    return (user: user, token: token);
+  }
 }
