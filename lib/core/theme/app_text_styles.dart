@@ -1,3 +1,6 @@
+import 'package:dompet_helm/core/theme/app_color.dart';
+import 'package:flutter/material.dart';
+
 class AppTextStyles {
   static const String _font = 'PlusJakartaSans';
 
@@ -76,5 +79,19 @@ class AppTextStyles {
     fontSize: 13.5,
     fontWeight: FontWeight.w600,
     color: AppColors.slate600,
+  );
+  static const TextStyle balanceLg = TextStyle(
+    fontFamily: _font,
+    fontSize: 30,
+    fontWeight: FontWeight.w800,
+    color: AppColors.ink,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle amountXL = TextStyle(
+    fontFamily: _font,
+    fontSize: 42,
+    fontWeight: FontWeight.w800,
+    color: AppColors.ink,
+    letterSpacing: -1,
   );
 }
