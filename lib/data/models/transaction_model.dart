@@ -13,4 +13,7 @@ class TransactionModel extends TransactionEntity {
   });
 
   factory TransactionModel.fromJson(Map<String, dynamic> json) {
+    final typeStr = json['type'] as String? ?? 'debit';
+    return TransactionModel(
+    )
   }
