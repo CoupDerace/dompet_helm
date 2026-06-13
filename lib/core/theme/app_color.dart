@@ -72,4 +72,6 @@ class AppColors{
     'violet': [violetSurface, violet],
     'slate': [bg, slate600],
   };
+
+  static List<Color> tone(String name) => tones[name] ?? tones['blue']!;
 }
