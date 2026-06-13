@@ -46,5 +46,15 @@ class AppRouter {
               return _withOtp(TwoFANotifPage(mode: extra?['mode'] as String? ?? 'login'));
             },
           ),
-
+          // Main app with tabs
+          ShellRoute(
+            builder: (context, state, child) {
+              final location = state.matchedLocation;
+              final tab = location.contains('history')
+                  ? 'history'
+                  : location.contains('promo')
+                      ? 'promo'
+                      : location.contains('akun')
+                          ? 'akun'
+                          : 'home';
 }
