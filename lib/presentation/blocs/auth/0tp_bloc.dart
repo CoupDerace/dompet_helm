@@ -134,5 +134,17 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
     }
   }
 
+  Future<void> _onRegisterTotp(OtpRegisterTotp _, Emitter<OtpState> emit) async {
+    emit(OtpLoading());
+    try {
+      final entity = await _registerTotp();
+      emit(OtpTotpSetup(entity));
+    } on ServerFailure catch (e) {
+      emit(OtpError(e.message));
+    } on NetworkFailure catch (e) {
+      emit(OtpError(e.message));
+    }
+  }
+
   
 }
