@@ -76,5 +76,7 @@ class PaymentError extends PaymentState {
 }
 
 class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
+  final TopupUsecase _topup;
+  final TransferUsecase _transfer;
   
 }
