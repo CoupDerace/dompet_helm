@@ -80,4 +80,9 @@ Future<void> init() async {
         getAccount: sl(),
         getTransactions: sl(),
       ));
+
+      sl.registerFactory(() => PaymentBloc(
+        topup: sl(),
+        transfer: sl(),
+      ));
 }
