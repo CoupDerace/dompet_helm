@@ -29,4 +29,11 @@ class PaymentRepositoryImpl implements PaymentRepository {
       );
     } on InvalidOtpException catch (e) {
       throw InvalidOtpFailure(e.message);
+    } on InsufficientBalanceException catch (e) {
+      throw InsufficientBalanceFailure(
+        balance: e.balance ?? 0,
+        amount: e.amount ?? 0,
+        message: e.message,
+      );
+    
 }
