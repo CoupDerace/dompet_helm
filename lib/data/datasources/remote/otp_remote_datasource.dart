@@ -20,5 +20,15 @@ class OtpRemoteDatasourceImpl implements OtpRemoteDatasource {
     );
   }
 
+  @override
+  Future<OtpSentEntity> sendOtpEmail() async {
+    final response = await _client.post(ApiEndpoints.sendOtpEmail);
+    final data = response['data'] as Map<String, dynamic>;
+    return OtpSentEntity(
+      otpType: data['otp_type'] as String,
+      expiresIn: (data['expires_in'] as num).toInt(),
+    );
+  }
+
   
 }
