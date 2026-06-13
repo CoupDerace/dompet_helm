@@ -40,4 +40,7 @@ class UserModel extends UserEntity {
 
   String toJsonString() => jsonEncode(toJson());
 
-  
+  static UserModel fromJsonString(String jsonString) {
+    return UserModel.fromJson(jsonDecode(jsonString) as Map<String, dynamic>);
+  }
+}
