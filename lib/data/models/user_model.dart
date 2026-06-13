@@ -37,3 +37,7 @@ class UserModel extends UserEntity {
       'two_fa_method': twoFaMethod,
     };
   }
+
+  String toJsonString() => jsonEncode(toJson());
+
+  
