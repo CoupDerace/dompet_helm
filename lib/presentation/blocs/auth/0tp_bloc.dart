@@ -120,5 +120,19 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
     }
   }
 
+  Future<void> _onConfirm(OtpConfirm event, Emitter<OtpState> emit) async {
+    emit(OtpLoading());
+    try {
+      await _confirm(code: event.code, otpType: event.otpType);
+      emit(OtpVerified());
+    } on InvalidOtpFailure catch (e) {
+      emit(OtpInvalid(e.message));
+    } on ServerFailure catch (e) {
+      emit(OtpError(e.message));
+    } on NetworkFailure catch (e) {
+      emit(OtpError(e.message));
+    }
+  }
+
   
 }
