@@ -67,14 +67,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required GetMeUsecase getMe,
     required LogoutUsecase logout,
     required AuthRepository authRepo,
-  })  : _verifyToken = verifyToken,
-        _getMe = getMe,
-        _logout = logout,
-        _authRepo = authRepo,
-        super(AuthInitial()) {
+  }) : _verifyToken = verifyToken,
+       _getMe = getMe,
+       _logout = logout,
+       _authRepo = authRepo,
+       super(AuthInitial()) {
     on<AuthCheckRequested>(_onCheckRequested);
     on<AuthLoginWithFirebase>(_onLoginWithFirebase);
     on<AuthLogoutRequested>(_onLogout);
     on<AuthUpdateFcmToken>(_onUpdateFcm);
+  }
+
+  Future<void> _onCheckRequested(
+    AuthCheckRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    
   }
 }
