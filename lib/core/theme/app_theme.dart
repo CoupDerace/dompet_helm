@@ -29,6 +29,23 @@ class AppTheme{
           color: AppColors.ink,
         ),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          minimumSize: const Size(double.infinity, 54),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          textStyle: const TextStyle(
+            fontFamily: fontFamily,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.1,
+          ),
+        ),
+      ),
+      
     )
   }
 }
