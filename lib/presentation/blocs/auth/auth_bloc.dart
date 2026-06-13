@@ -108,6 +108,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthLoginWithFirebase event,
     Emitter<AuthState> emit,
   ) async {
+    emit(AuthLoading());
     
   }
 }
