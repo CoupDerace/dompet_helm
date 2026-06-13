@@ -14,6 +14,21 @@ class AppTheme{
         error: AppColors.red,
       ),
       scaffoldBackgroundColor: AppColors.bg,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+        iconTheme: IconThemeData(color: AppColors.ink),
+        titleTextStyle: TextStyle(
+          fontFamily: fontFamily,
+          fontSize: 17,
+          fontWeight: FontWeight.w700,
+          color: AppColors.ink,
+        ),
+      ),
     )
   }
 }
