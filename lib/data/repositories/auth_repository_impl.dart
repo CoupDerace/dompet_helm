@@ -81,5 +81,6 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<bool> isAuthVerified() => _local.getAuthVerified();
 
-  
+  @override
+  Future<String?> getSavedToken() => _local.getToken();
 }
