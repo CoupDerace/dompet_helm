@@ -33,4 +33,7 @@ class TransferResultEntity extends Equatable{
     required this.balanceAfter,
     required this.createdAt,
   });
+
+  @override
+  List<Object?> get props => [transactionId, amount, description, balanceBefore, balanceAfter];
 }
