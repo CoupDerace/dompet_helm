@@ -77,5 +77,6 @@ class AppRouter {
             routes: [
               GoRoute(path: '/home', builder: (_, __) => const HomePage()),
               GoRoute(path: '/history', builder: (_, __) => const HistoryPage()),
-
+              GoRoute(path: '/promo', builder: (_, __) => const PromoPage()),
+              
 }
