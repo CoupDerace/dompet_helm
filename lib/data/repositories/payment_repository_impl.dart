@@ -35,5 +35,10 @@ class PaymentRepositoryImpl implements PaymentRepository {
         amount: e.amount ?? 0,
         message: e.message,
       );
-    
+    } on ServerException catch (e) {
+      throw ServerFailure(e.message);
+    } on NetworkException catch (e) {
+      throw NetworkFailure(e.message);
+    }
+  }
 }
