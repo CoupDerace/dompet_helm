@@ -86,3 +86,8 @@ Future<void> init() async {
         transfer: sl(),
       ));
 }
+
+/// Call this after login to set the JWT token in the API client
+void setApiToken(String token) {
+  sl<ApiClient>().setAuthToken(token);
+}
