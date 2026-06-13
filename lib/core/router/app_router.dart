@@ -115,4 +115,20 @@ class AppRouter {
               return _withPayment(PinPage(flowData: extra));
             },
           ),
+          GoRoute(
+            path: '/success',
+            builder: (_, state) {
+              final extra = (state.extra as Map<String, dynamic>?) ?? {};
+              return _withAccount(SuccessPage(
+                title: extra['title'] as String? ?? 'Berhasil',
+                subtitle: extra['subtitle'] as String? ?? '',
+                amount: (extra['amount'] as num? ?? 0).toDouble(),
+                lines: (extra['lines'] as List<dynamic>?)
+                    ?.map((l) => (l as List<dynamic>).map((e) => e.toString()).toList())
+                    .toList() ?? [],
+              ));
+            },
+          ),
+          GoRoute(path: '/merchant', builder: (_, __) => _withPayment(const MerchantCheckoutPage())),
+        ],
 }
