@@ -24,5 +24,6 @@ class TransactionEntity extends Equatable {
   bool get isCredit => type == TransactionType.credit;
   double get signedAmount => isCredit ? amount : -amount;
 
-  
+  @override
+  List<Object?> get props => [id, accountId, amount, type, description, createdAt];
 }
