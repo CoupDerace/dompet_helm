@@ -21,5 +21,8 @@ Future<void> init() async {
 sl.registerLazySingleton<OtpRemoteDatasource>(
   () => OtpRemoteDatasourceImpl(sl()),
 );
+sl.registerLazySingleton<AccountRemoteDatasource>(
+  () => AccountRemoteDatasourceImpl(sl()),
+);
 
 }
