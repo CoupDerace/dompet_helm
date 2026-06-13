@@ -22,5 +22,10 @@ class AppBlocObserver extends BlocObserver {
         '         next    : ${change.nextState.runtimeType}');
   }
 
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    super.onError(bloc, error, stackTrace);
+    debugPrint('[BLoC] ERROR   ${bloc.runtimeType} → $error');
+  }
+
   
 }
