@@ -7,5 +7,5 @@ class GetAccountUsecase {
 class GetTransactionsUsecase {
   final AccountRepository _repository;
   GetTransactionsUsecase(this._repository);
-  
+  Future<List<TransactionEntity>> call() => _repository.getTransactions();
 }
