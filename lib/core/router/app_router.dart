@@ -131,4 +131,16 @@ class AppRouter {
           ),
           GoRoute(path: '/merchant', builder: (_, __) => _withPayment(const MerchantCheckoutPage())),
         ],
+      );
+      
+  static Widget _withAuth(Widget child) {
+    return BlocProvider(create: (_) => sl<AuthBloc>(), child: child);
+  }
+
+  static Widget _withOtp(Widget child) {
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (_) => sl<AuthBloc>()),
+      BlocProvider(create: (_) => sl<OtpBloc>()),
+    ], child: child);
+  }
 }
