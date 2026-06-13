@@ -16,3 +16,7 @@ class PaymentResultEntity extends Equatable {
   @override
   List<Object?> get props => [title, subtitle, amount, lines, kind];
 }
+
+class TransferResultEntity extends Equatable{
+  
+}
