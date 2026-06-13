@@ -48,4 +48,15 @@ class AuthRepositoryImpl implements AuthRepository {
       throw NetworkFailure(e.message);
     }
   }
+
+  @override
+  Future<UserEntity> getMe() async {
+    try {
+      return await _remote.getMe();
+    } on ServerException catch (e) {
+      throw ServerFailure(e.message);
+    } on NetworkException catch (e) {
+      throw NetworkFailure(e.message);
+    }
+  }
 }
