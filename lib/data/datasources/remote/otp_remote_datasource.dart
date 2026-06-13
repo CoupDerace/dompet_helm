@@ -30,5 +30,11 @@ class OtpRemoteDatasourceImpl implements OtpRemoteDatasource {
     );
   }
 
-  
+  @override
+  Future<void> confirmOtp({required String code, required String otpType}) async {
+    await _client.post(ApiEndpoints.confirmOtp, data: {
+      'code': code,
+      'otp_type': otpType,
+    });
+  }
 }
