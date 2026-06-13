@@ -35,6 +35,7 @@ abstract class PaymentState extends Equatable {
 }
 
 class PaymentInitial extends PaymentState {}
+
 class PaymentLoading extends PaymentState {}
 
 class PaymentTopupSuccess extends PaymentState {
@@ -72,4 +73,8 @@ class PaymentError extends PaymentState {
   PaymentError(this.message);
   @override
   List<Object?> get props => [message];
+}
+
+class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
+  
 }
