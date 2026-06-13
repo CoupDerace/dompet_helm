@@ -11,3 +11,10 @@ class SendOtpEmailUsecase {
   SendOtpEmailUsecase(this._repository);
   Future<OtpSentEntity> call() => _repository.sendOtpEmail();
 }
+
+class ConfirmOtpUsecase {
+  final OtpRepository _repository;
+  ConfirmOtpUsecase(this._repository);
+  Future<void> call({required String code, required String otpType}) =>
+      _repository.confirmOtp(code: code, otpType: otpType);
+}
