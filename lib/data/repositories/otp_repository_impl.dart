@@ -39,5 +39,16 @@ class OtpRepositoryImpl implements OtpRepository {
     }
   }
 
+  @override
+  Future<TotpSetupEntity> registerTotp() async {
+    try {
+      return await _remote.registerTotp();
+    } on ServerException catch (e) {
+      throw ServerFailure(e.message);
+    } on NetworkException catch (e) {
+      throw NetworkFailure(e.message);
+    }
+  }
+
   
 }
