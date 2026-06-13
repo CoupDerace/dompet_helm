@@ -267,3 +267,41 @@ class _Row extends StatelessWidget {
     );
   }
 }
+
+class _Toggle extends StatefulWidget {
+  @override
+  State<_Toggle> createState() => _ToggleState();
+}
+
+class _ToggleState extends State<_Toggle> {
+  bool _on = true;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => setState(() => _on = !_on),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        width: 44,
+        height: 26,
+        decoration: BoxDecoration(
+          color: _on ? AppColors.green : AppColors.line,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: AnimatedAlign(
+          duration: const Duration(milliseconds: 180),
+          alignment: _on ? Alignment.centerRight : Alignment.centerLeft,
+          child: Container(
+            margin: const EdgeInsets.all(3),
+            width: 20,
+            height: 20,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 3, offset: Offset(0, 1))],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
