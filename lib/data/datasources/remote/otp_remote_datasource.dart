@@ -37,4 +37,18 @@ class OtpRemoteDatasourceImpl implements OtpRemoteDatasource {
       'otp_type': otpType,
     });
   }
+
+   @override
+  Future<TotpSetupEntity> registerTotp() async {
+    final response = await _client.post(ApiEndpoints.totpRegister);
+    final data = response['data'] as Map<String, dynamic>;
+    return TotpSetupEntity(
+      secret: data['secret'] as String,
+      qrCode: data['qr_code'] as String,
+      issuer: data['issuer'] as String? ?? 'DKG',
+      account: data['account'] as String? ?? '',
+    );
+  }
+
+  
 }
