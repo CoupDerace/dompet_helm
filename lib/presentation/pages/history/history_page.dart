@@ -49,4 +49,16 @@ class _HistoryPageState extends State<HistoryPage> {
                                   color: _tab == t[0] ? AppColors.primary : AppColors.bg,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
+                                child: Text(t[1],
+                                    style: TextStyle(
+                                      fontFamily: 'PlusJakartaSans',
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w700,
+                                      color: _tab == t[0] ? Colors.white : AppColors.slate500,
+                                    )),
+                              ),
+                            ),
+                          ))
+                      .toList(),
+                ),
   }
