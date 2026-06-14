@@ -96,3 +96,8 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 14.5, color: AppColors.slate500, height: 1.55)),
                       const SizedBox(height: 28),
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 80),
+                        transform: _hasError ? (Matrix4.identity()..translate(8.0)) : Matrix4.identity(),
+                        child: CodeInput(value: _code, onChanged: _onCodeChanged, hasError: _hasError),
+                      ),
