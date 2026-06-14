@@ -212,4 +212,14 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                         ),
                       ),
                     ],
+                    const SizedBox(height: 40),
+                    _timer > 0
+                        ? Text(
+                            'Kirim ulang kode dalam 00:${_timer.toString().padLeft(2, '0')}',
+                            style: const TextStyle(
+                              fontFamily: 'PlusJakartaSans',
+                              fontSize: 13.5,
+                              color: AppColors.slate400,
+                            ),
+                          )
     
