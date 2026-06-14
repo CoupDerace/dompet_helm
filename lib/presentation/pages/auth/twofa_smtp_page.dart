@@ -91,3 +91,8 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
                             color: AppColors.ink,
                             letterSpacing: -0.3,
                           )),
+                      const SizedBox(height: 8),
+                      const Text('Kode 6 digit dikirim ke email kamu via SMTP',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 14.5, color: AppColors.slate500, height: 1.55)),
+                      const SizedBox(height: 28),
