@@ -118,3 +118,20 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
                           color: AppColors.amberSurface,
                           borderRadius: BorderRadius.circular(12),
                         ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Icon(DkgIcons.info, size: 16, color: Color(0xFFB5760B)),
+                            SizedBox(width: 8),
+                            Text('Cek email inbox atau spam kamu',
+                                style: TextStyle(
+                                  fontFamily: 'PlusJakartaSans',
+                                  fontSize: 12.5,
+                                  color: Color(0xFF8A5A06),
+                                  fontWeight: FontWeight.w600,
+                                )),
+                                ],
+                        ),
+                      ),
+                      const SizedBox(height: 40),
+                      _timer > 0
