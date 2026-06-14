@@ -27,3 +27,9 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
       setState(() => _ttl = _ttl <= 1 ? 30 : _ttl - 1);
     });
   }
+
+  @override
+  void dispose() {
+    _ticker?.cancel();
+    super.dispose();
+  }
