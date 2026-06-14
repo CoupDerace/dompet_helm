@@ -222,4 +222,28 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                               color: AppColors.slate400,
                             ),
                           )
+                        : TextButton.icon(
+                            onPressed: _resend,
+                            icon: const Icon(DkgIcons.refresh, size: 16, color: AppColors.primary),
+                            label: const Text(
+                              'Kirim ulang kode',
+                              style: TextStyle(
+                                fontFamily: 'PlusJakartaSans',
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
     
