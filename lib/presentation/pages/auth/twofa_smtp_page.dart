@@ -45,5 +45,9 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
   override
   Widget build(BuildContext context) {
     return BlocListener<OtpBloc, OtpState>(
-      
+      listener: (context, state) {
+        if (state is OtpVerified) {
+          if (widget.mode == 'setup') {
+            context.go('/home');
+          }
     )}
