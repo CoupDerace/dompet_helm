@@ -49,5 +49,8 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
         if (state is OtpVerified) {
           if (widget.mode == 'setup') {
             context.go('/home');
+          } else {
+            context.read<AuthBloc>().add(AuthCheckRequested());
+            context.go('/home');
           }
     )}
