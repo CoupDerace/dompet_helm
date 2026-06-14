@@ -72,3 +72,17 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       if (mounted) setState(() => _loading = false);
     }
   }
+
+  Future<void> _resend() async {
+    try {
+      await sl<SendOtpEmailUsecase>()();
+      _startTimer();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Kode OTP baru telah dikirim ke email kamu'),
+            backgroundColor: AppColors.green,
+          ),
+        );
+      }
+    
