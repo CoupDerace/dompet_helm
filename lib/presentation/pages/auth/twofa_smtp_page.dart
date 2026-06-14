@@ -53,4 +53,14 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
             context.read<AuthBloc>().add(AuthCheckRequested());
             context.go('/home');
           }
-    )}
+        } else if (state is OtpInvalid) {
+          setState(() { _hasError = true; });
+          Future.delayed(const Duration(milliseconds: 650), () {
+            if (mounted) setState(() { _code = ''; _hasError = false; });
+          });
+        } else if (state is OtpError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message), backgroundColor: AppColors.red),
+          );
+        }
+      },
