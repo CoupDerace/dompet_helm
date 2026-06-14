@@ -34,3 +34,10 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
     _countdown?.cancel();
     super.dispose();
   }
+
+  void _onCodeChanged(String v) {
+    setState(() { _code = v; _hasError = false; });
+    if (v.length == 6) {
+      context.read<OtpBloc>().add(OtpConfirm(code: v, otpType: AppConstants.otpTypeEmail));
+    }
+  }
