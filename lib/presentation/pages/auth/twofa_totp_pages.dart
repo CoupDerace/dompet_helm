@@ -98,6 +98,25 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
                   },
                 ),
               ),
+              Expanded(
+                child: BlocBuilder<OtpBloc, OtpState>(
+                  builder: (context, state) {
+                    if (state is OtpLoading && _step == 'loading') {
+                      return const Center(child: CircularProgressIndicator(color: AppColors.primary));
+                    }
+                    if (_step == 'scan' && state is OtpTotpSetup) {
+                      return _buildScanStep(state, context);
+                    }
+                    return _buildCodeStep(context);
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
     );
   }
 },
