@@ -93,4 +93,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       }
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    final email = FirebaseAuth.instance.currentUser?.email ?? 'email kamu';
+
     
