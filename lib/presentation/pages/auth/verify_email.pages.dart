@@ -190,4 +190,14 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                         hasError: _hasError,
                       ),
                     ),
+                    if (_loading) ...[
+                      const SizedBox(height: 16),
+                      const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.5,
+                          valueColor: AlwaysStoppedAnimation(AppColors.primary),
+                        ),
+                      ),
     
