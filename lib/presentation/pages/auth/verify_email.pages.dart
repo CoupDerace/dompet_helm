@@ -31,3 +31,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       }
     });
   }
+
+  @override
+  void dispose() {
+    _countdown?.cancel();
+    super.dispose();
+  }
