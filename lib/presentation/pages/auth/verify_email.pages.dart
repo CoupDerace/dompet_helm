@@ -129,4 +129,20 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                             child: Icon(DkgIcons.mail, size: 36, color: AppColors.primary),
                           ),
                         ),
+                        Positioned(
+                          top: -4,
+                          right: -4,
+                          child: Container(
+                            width: 26,
+                            height: 26,
+                            decoration: BoxDecoration(
+                              color: AppColors.green,
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: const Icon(DkgIcons.check, size: 13, color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
     
