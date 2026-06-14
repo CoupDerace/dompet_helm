@@ -87,6 +87,17 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
             children: [
               Align(
                 alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: const Icon(DkgIcons.arrowLeft, color: AppColors.ink),
+                  onPressed: () {
+                    if (_step == 'code' && widget.mode == 'setup') {
+                      setState(() => _step = 'scan');
+                    } else {
+                      context.go(widget.mode == 'setup' ? '/setup-2fa' : '/login');
+                    }
+                  },
+                ),
+              ),
     );
   }
 },
