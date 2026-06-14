@@ -31,3 +31,15 @@ class _TwoFANotifPageState extends State<TwoFANotifPage> {
           );
         }
       },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.ink),
+                  onPressed: () => context.go(widget.mode == 'setup' ? '/setup-2fa' : '/login'),
+                ),
+              ),
