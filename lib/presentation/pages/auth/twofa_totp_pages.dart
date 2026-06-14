@@ -15,4 +15,15 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
   int _ttl = 30;
   Timer? _ticker;
 
-  
+  @override
+  void initState() {
+    super.initState();
+    if (widget.mode == 'setup') {
+      context.read<OtpBloc>().add(OtpRegisterTotp());
+    } else {
+      setState(() => _step = 'code');
+    }
+    _ticker = Timer.periodic(const Duration(seconds: 1), (_) {
+      setState(() => _ttl = _ttl <= 1 ? 30 : _ttl - 1);
+    });
+  }
