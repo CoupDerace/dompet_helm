@@ -237,3 +237,64 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
         ],
       ),
     );
+  }
+
+  Widget _buildCodeStep(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(28, 8, 28, 24),
+      child: Column(
+        children: [
+          const FeatureIcon(icon: DkgIcons.smartphone, tone: 'violet', size: 74, iconSize: 36),
+          const SizedBox(height: 18),
+          const Text('Masukkan kode 6 digit',
+              style: TextStyle(
+                fontFamily: 'PlusJakartaSans',
+                fontSize: 23,
+                fontWeight: FontWeight.w800,
+                color: AppColors.ink,
+                letterSpacing: -0.3,
+              )),
+          const SizedBox(height: 8),
+          const Text('Buka aplikasi authenticator kamu dan masukkan kode yang sedang aktif.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 14.5, color: AppColors.slate500, height: 1.55)),
+          const SizedBox(height: 28),
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 80),
+            transform: _hasError ? (Matrix4.identity()..translate(8.0)) : Matrix4.identity(),
+            child: CodeInput(value: _code, onChanged: _onCodeChanged, hasError: _hasError),
+          ),
+          if (_hasError) ...[
+            const SizedBox(height: 12),
+            const Text('Kode tidak cocok',
+                style: TextStyle(
+                  fontFamily: 'PlusJakartaSans',
+                  color: AppColors.red,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                )),
+          ],
+          const SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(
+                  value: _ttl / 30,
+                  strokeWidth: 2.4,
+                  backgroundColor: AppColors.line,
+                  valueColor: const AlwaysStoppedAnimation(AppColors.violet),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text('Kode berganti dalam ${_ttl}s',
+                  style: const TextStyle(fontSize: 13, color: AppColors.slate500)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
