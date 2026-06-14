@@ -142,4 +142,28 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
             style: TextStyle(fontSize: 14.5, color: AppColors.slate500, height: 1.55),
           ),
           const SizedBox(height: 22),
+          // QR code from base64
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: AppColors.shadowCard,
+              border: Border.all(color: AppColors.line),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.memory(
+                Uri.parse(state.entity.qrCode).data!.contentAsBytes(),
+                width: 172,
+                height: 172,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 172,
+                  height: 172,
+                  color: AppColors.bg,
+                  child: const Center(child: Icon(Icons.qr_code_rounded, size: 80, color: AppColors.slate400)),
+                ),
+              ),
+            ),
+          ),
 },
