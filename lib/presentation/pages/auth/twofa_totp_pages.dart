@@ -64,6 +64,10 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
       @override
   Widget build(BuildContext context) {
     return BlocListener<OtpBloc, OtpState>(
+      listener: (context, state) {
+        if (state is OtpTotpSetup) {
+          setState(() => _step = 'scan');
+        } 
     );
   }
 },
