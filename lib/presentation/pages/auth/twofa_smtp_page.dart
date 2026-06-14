@@ -13,3 +13,11 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
   int _timer = AppConstants.otpResendSeconds;
   Timer? _countdown;
 
+  @override
+  void initState() {
+    super.initState();
+    context.read<OtpBloc>().add(OtpSendEmail());
+    _startTimer();
+  }
+
+  
