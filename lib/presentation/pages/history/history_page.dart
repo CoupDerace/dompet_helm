@@ -1,4 +1,4 @@
-
+import 'package:flutter/material.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -61,6 +61,11 @@ class _HistoryPageState extends State<HistoryPage> {
                           ))
                       .toList(),
                 ),
+                const SizedBox(height: 14),
+                const Divider(height: 1, color: AppColors.line2),
+              ],
+            ),
+          ),
                 Expanded(
             child: BlocBuilder<AccountBloc, AccountState>(
               builder: (context, state) {
