@@ -85,4 +85,12 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           ),
         );
       }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Gagal kirim ulang, coba lagi'), backgroundColor: AppColors.red),
+        );
+      }
+    }
+  }
     
