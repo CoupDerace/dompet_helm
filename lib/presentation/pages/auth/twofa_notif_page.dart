@@ -69,3 +69,56 @@ class _TwoFANotifPageState extends State<TwoFANotifPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
+                      const SizedBox(height: 8),
+                      Text(
+                        _phase == 'approved'
+                            ? 'Identitas terverifikasi. Mengarahkan…'
+                            : 'Kami mengirim notifikasi ke perangkatmu. Ketuk "Setujui" untuk melanjutkan.',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontFamily: 'PlusJakartaSans',
+                          fontSize: 14.5,
+                          color: AppColors.slate500,
+                          height: 1.55,
+                        ),
+                      ),
+                      if (_phase == 'waiting') ...[
+                        const SizedBox(height: 34),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 18,
+                              height: 18,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.4,
+                                valueColor: AlwaysStoppedAnimation(AppColors.green),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text('Menunggu persetujuan…',
+                                style: TextStyle(
+                                  fontFamily: 'PlusJakartaSans',
+                                  fontSize: 13.5,
+                                  color: AppColors.slate400,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                          ],
+                        ),
+                      ],
+                      const Spacer(),
+                      const Text(
+                        'Tidak menerima notifikasi? Kirim ulang',
+                        style: TextStyle(fontSize: 12.5, color: AppColors.slate400),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
