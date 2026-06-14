@@ -20,4 +20,11 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
     _startTimer();
   }
 
-  
+  void _startTimer() {
+    _countdown?.cancel();
+    setState(() => _timer = AppConstants.otpResendSeconds);
+    _countdown = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (_timer <= 0) t.cancel();
+      else setState(() => _timer--);
+    });
+  }
