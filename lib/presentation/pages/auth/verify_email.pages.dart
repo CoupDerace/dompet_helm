@@ -19,3 +19,15 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     super.initState();
     _startTimer();
   }
+
+  void _startTimer() {
+    _countdown?.cancel();
+    setState(() => _timer = 60);
+    _countdown = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (_timer <= 0) {
+        t.cancel();
+      } else {
+        setState(() => _timer--);
+      }
+    });
+  }
