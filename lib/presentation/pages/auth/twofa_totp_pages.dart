@@ -198,7 +198,32 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
                         ),
                       ),
                     ),
-                    
+                    const SizedBox(width: 8),
+                    TextButton.icon(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                      onPressed: () async {
+                        await Clipboard.setData(ClipboardData(text: state.entity.secret));
+                        setState(() => _copied = true);
+                        Future.delayed(const Duration(milliseconds: 1400), () {
+                          if (mounted) setState(() => _copied = false);
+                        });
+                      },
+                      icon: Icon(_copied ? DkgIcons.check : DkgIcons.copy,
+                          size: 17, color: _copied ? AppColors.green : AppColors.primary),
+                      label: Text(_copied ? 'Tersalin' : 'Salin',
+                          style: TextStyle(
+                            fontFamily: 'PlusJakartaSans',
+                            color: _copied ? AppColors.green : AppColors.primary,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13,
+                          )),
+                    ),
+                  ],
+                ),
                   ],
                 ),
               ],
