@@ -168,3 +168,35 @@ class _Setup2FAPageState extends State<Setup2FAPage> {
                             ),
                           ),
                           const SizedBox(width: 14),
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 150),
+                            width: 22,
+                            height: 22,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: on ? AppColors.primary : Colors.white,
+                              border: Border.all(
+                                color: on ? AppColors.primary : AppColors.line,
+                                width: 2,
+                              ),
+                            ),
+                            child: on
+                                ? Center(
+                                    child: Container(
+                                      width: 9,
+                                      height: 9,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                : null,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),  
