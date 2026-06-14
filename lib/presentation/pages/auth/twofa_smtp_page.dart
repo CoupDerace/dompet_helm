@@ -7,3 +7,8 @@ class TwoFASmtpPage extends StatefulWidget {
   State<TwoFASmtpPage> createState() => _TwoFASmtpPageState();
 }
 
+class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
+  String _code = '';
+  bool _hasError = false;
+  
+
