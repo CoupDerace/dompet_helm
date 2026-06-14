@@ -101,3 +101,13 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
                         transform: _hasError ? (Matrix4.identity()..translate(8.0)) : Matrix4.identity(),
                         child: CodeInput(value: _code, onChanged: _onCodeChanged, hasError: _hasError),
                       ),
+                      if (_hasError) ...[
+                        const SizedBox(height: 12),
+                        const Text('Kode salah',
+                            style: TextStyle(
+                              fontFamily: 'PlusJakartaSans',
+                              color: AppColors.red,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ],
