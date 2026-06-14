@@ -81,4 +81,51 @@ class _HistoryPageState extends State<HistoryPage> {
                           style: TextStyle(fontFamily: 'PlusJakartaSans', color: AppColors.slate400)),
                     );
                   }
+                  return ListView.separated(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: txns.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 0),
+                    itemBuilder: (_, i) {
+                      return i == 0
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 4, bottom: 10),
+                                  child: Text('Hari ini',
+                                      style: TextStyle(
+                                        fontFamily: 'PlusJakartaSans',
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.slate400,
+                                      )),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: AppColors.shadowSoft,
+                                  ),
+                                  child: Column(
+                                    children: txns
+                                        .asMap()
+                                        .entries
+                                        .map((e) => TransactionRow(txn: e.value, divider: e.key > 0))
+                                        .toList(),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : const SizedBox.shrink();
+                    },
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
