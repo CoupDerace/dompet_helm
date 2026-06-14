@@ -69,7 +69,11 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
           setState(() => _step = 'scan');
         } else if (state is OtpTotpEnabled || state is OtpVerified) {
           context.go('/home');
-        } 
+        } else if (state is OtpInvalid) {
+          setState(() => _hasError = true);
+          Future.delayed(const Duration(milliseconds: 650), () {
+            if (mounted) setState(() { _code = ''; _hasError = false; });
+          });
     );
   }
 },
