@@ -200,3 +200,19 @@ class _Setup2FAPageState extends State<Setup2FAPage> {
                 }).toList(),
               ),
             ),  
+            Padding(
+              padding: const EdgeInsets.fromLTRB(26, 14, 26, 22),
+              child: AppButton(
+                label: 'Lanjutkan',
+                onPressed: () {
+                  final m = _twoFaMethods.firstWhere((m) => m.key == _selected);
+                  context.go(m.route, extra: {'mode': 'setup'});
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
