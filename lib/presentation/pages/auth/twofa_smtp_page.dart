@@ -139,3 +139,17 @@ class _TwoFASmtpPageState extends State<TwoFASmtpPage> {
                               'Kirim ulang dalam 00:${_timer.toString().padLeft(2, '0')}',
                               style: const TextStyle(fontSize: 13.5, color: AppColors.slate400),
                             )
+                            : TextButton.icon(
+                              onPressed: () {
+                                context.read<OtpBloc>().add(OtpSendEmail());
+                                _startTimer();
+                              },
+                              icon: const Icon(DkgIcons.refresh, size: 16, color: AppColors.primary),
+                              label: const Text('Kirim ulang kode',
+                                  style: TextStyle(
+                                    fontFamily: 'PlusJakartaSans',
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                  )),
+                            ),
