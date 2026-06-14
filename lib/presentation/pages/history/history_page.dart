@@ -36,4 +36,17 @@ class _HistoryPageState extends State<HistoryPage> {
                       letterSpacing: -0.3,
                     )),
                 const SizedBox(height: 16),
+                Row(
+                  children: [['all', 'Semua'], ['out', 'Pengeluaran'], ['in', 'Pemasukan']]
+                      .map((t) => Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: GestureDetector(
+                              onTap: () => setState(() => _tab = t[0]),
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 150),
+                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: _tab == t[0] ? AppColors.primary : AppColors.bg,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
   }
