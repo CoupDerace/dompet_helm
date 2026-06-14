@@ -176,4 +176,18 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                           ),
                         ],
                       ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 30),
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 100),
+                      transform: _hasError
+                          ? (Matrix4.identity()..translateByDouble(10.0, 0, 0, 1.0))
+                          : Matrix4.identity(),
+                      child: CodeInput(
+                        value: _code,
+                        onChanged: _loading ? (_) {} : _onCodeChanged,
+                        hasError: _hasError,
+                      ),
+                    ),
     
