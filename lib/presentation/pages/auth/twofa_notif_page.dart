@@ -57,3 +57,15 @@ class _TwoFANotifPageState extends State<TwoFANotifPage> {
                         size: 82,
                         iconSize: 40,
                       ),
+                      const SizedBox(height: 26),
+                      Text(
+                        _phase == 'approved' ? 'Disetujui!' : 'Cek notifikasi kamu',
+                        style: const TextStyle(
+                          fontFamily: 'PlusJakartaSans',
+                          fontSize: 23,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.ink,
+                          letterSpacing: -0.3,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
