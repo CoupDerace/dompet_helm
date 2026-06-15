@@ -1,3 +1,9 @@
+import 'package:dio/dio.dart';
+import 'package:dompet_helm/core/constants/app_constant.dart';
+import 'package:dompet_helm/core/error/exceptions.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
 class ApiClient {
   late final Dio _dio;
 

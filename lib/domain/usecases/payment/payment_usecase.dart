@@ -1,5 +1,8 @@
 
 
+import 'package:dompet_helm/domain/entitas/payment_result_entity.dart';
+import 'package:dompet_helm/domain/repositories/payment_repository.dart';
+
 class TopupUsecase {
   final PaymentRepository _repository;
   TopupUsecase(this._repository);

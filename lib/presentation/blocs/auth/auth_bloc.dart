@@ -1,3 +1,12 @@
+import 'package:dompet_helm/core/error/failures.dart';
+import 'package:dompet_helm/domain/entitas/user_entity.dart';
+import 'package:dompet_helm/domain/repositories/auth_repository.dart';
+import 'package:dompet_helm/domain/usecases/auth/get_me_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/logout_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/verify_firebase_token_usecase.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 // Events
 abstract class AuthEvent extends Equatable {
   @override
@@ -118,7 +127,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthError(e.message));
     } on NetworkFailure catch (e) {
       emit(AuthError(e.message));
-    } atch (e) {
+    } catch (e) {
       emit(AuthError('Terjadi kesalahan. Silakan coba lagi.'));
     }
   }

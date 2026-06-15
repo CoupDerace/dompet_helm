@@ -1,3 +1,7 @@
+import 'package:dompet_helm/domain/entitas/account_entity.dart';
+import 'package:dompet_helm/domain/entitas/transaction_entity.dart';
+import 'package:dompet_helm/domain/repositories/account_repository.dart';
+
 class GetAccountUsecase {
   final AccountRepository _repository;
   GetAccountUsecase(this._repository);

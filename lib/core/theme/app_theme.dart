@@ -1,3 +1,7 @@
+import 'package:dompet_helm/core/theme/app_color.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 class AppTheme {
   static ThemeData get light {
     const fontFamily = 'PlusJakartaSans';

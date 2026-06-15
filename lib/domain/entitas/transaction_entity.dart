@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 enum TransactionType { credit, debit }
 
 class TransactionEntity extends Equatable {

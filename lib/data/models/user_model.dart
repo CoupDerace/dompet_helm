@@ -1,4 +1,5 @@
-
+import 'dart:convert';
+import 'package:dompet_helm/domain/entitas/user_entity.dart';
 
 class UserModel extends UserEntity {
   const UserModel({

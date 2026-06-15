@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
 
@@ -15,13 +18,13 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onChange(BlocBase bloc, Change change) {
-    super.onC
-    hange(bloc, change);
+    super.onChange(bloc, change);
     debugPrint('[BLoC] STATE   ${bloc.runtimeType}\n'
         '         current : ${change.currentState.runtimeType}\n'
         '         next    : ${change.nextState.runtimeType}');
   }
-
+  
+  @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
     debugPrint('[BLoC] ERROR   ${bloc.runtimeType} → $error');

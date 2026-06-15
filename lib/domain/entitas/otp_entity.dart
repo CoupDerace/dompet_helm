@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class TotpSetupEntity extends Equatable {
   final String secret;
   final String qrCode;

@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class AccountEntity extends Equatable {
   final int id;
   final int userId;

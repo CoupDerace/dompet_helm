@@ -1,3 +1,5 @@
+import 'package:dompet_helm/domain/entitas/otp_entity.dart';
+
 abstract class OtpRepository {
   Future<OtpSentEntity> sendOtpFirebase();
   Future<OtpSentEntity> sendOtpEmail();

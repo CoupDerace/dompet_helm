@@ -1,3 +1,5 @@
+import 'package:dompet_helm/domain/entitas/user_entity.dart';
+
 abstract class AuthRepository {
   Future<({UserEntity user, String token})> verifyFirebaseToken(String firebaseToken);
   Future<({UserEntity user, String token})> registerWithOtp(String firebaseToken);

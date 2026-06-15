@@ -1,4 +1,4 @@
-
+import 'package:dompet_helm/domain/entitas/transaction_entity.dart';
 
 class TransactionModel extends TransactionEntity {
   const TransactionModel({
@@ -23,5 +23,6 @@ class TransactionModel extends TransactionEntity {
       balanceBefore: (json['balance_before'] as num? ?? 0).toDouble(),
       balanceAfter: (json['balance_after'] as num? ?? 0).toDouble(),
       createdAt: DateTime.tryParse(json['CreatedAt'] ?? json['created_at'] as String? ?? '') ?? DateTime.now(),
-    )
+    );
   }
+}

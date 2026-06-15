@@ -1,3 +1,32 @@
+import 'package:dompet_helm/core/network/api_client.dart';
+import 'package:dompet_helm/data/datasources/local/secure_storage_datasource.dart';
+import 'package:dompet_helm/data/datasources/remote/account_remote_datasource.dart';
+import 'package:dompet_helm/data/datasources/remote/auth_remote_datasource.dart';
+import 'package:dompet_helm/data/datasources/remote/otp_remote_datasource.dart';
+import 'package:dompet_helm/data/datasources/remote/payment_remote_datasource.dart';
+import 'package:dompet_helm/data/repositories/account_repository_impl.dart';
+import 'package:dompet_helm/data/repositories/auth_repository_impl.dart';
+import 'package:dompet_helm/data/repositories/otp_repository_impl.dart';
+import 'package:dompet_helm/data/repositories/payment_repository_impl.dart';
+import 'package:dompet_helm/domain/repositories/account_repository.dart';
+import 'package:dompet_helm/domain/repositories/auth_repository.dart';
+import 'package:dompet_helm/domain/repositories/otp_repository.dart';
+import 'package:dompet_helm/domain/repositories/payment_repository.dart';
+import 'package:dompet_helm/domain/usecases/account/get_account_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/get_me_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/logout_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/register_with_otp_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/send_otp_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/verify_email_otp_usecase.dart';
+import 'package:dompet_helm/domain/usecases/auth/verify_firebase_token_usecase.dart';
+import 'package:dompet_helm/domain/usecases/payment/payment_usecase.dart';
+import 'package:dompet_helm/presentation/blocs/account/account_bloc.dart';
+import 'package:dompet_helm/presentation/blocs/auth/auth_bloc.dart';
+import 'package:dompet_helm/presentation/blocs/auth/otp_bloc.dart';
+import 'package:dompet_helm/presentation/blocs/payment/payment_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get_it/get_it.dart';
+
 final sl = GetIt.instance;
 
 Future<void> init() async {

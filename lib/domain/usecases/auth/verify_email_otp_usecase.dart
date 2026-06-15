@@ -1,5 +1,7 @@
 
 
+import 'package:dompet_helm/domain/repositories/auth_repository.dart';
+
 class VerifyEmailOtpUsecase {
   final AuthRepository _repository;
   VerifyEmailOtpUsecase(this._repository);

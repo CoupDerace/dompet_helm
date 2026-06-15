@@ -1,4 +1,4 @@
-
+import 'package:dompet_helm/domain/entitas/account_entity.dart';
 
 class AccountModel extends AccountEntity {
   const AccountModel({
