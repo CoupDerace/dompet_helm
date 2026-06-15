@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_color.dart';
 
 class SuccessCheck extends StatefulWidget {
   final double size;
@@ -11,7 +11,8 @@ class SuccessCheck extends StatefulWidget {
   State<SuccessCheck> createState() => _SuccessCheckState();
 }
 
-class _SuccessCheckState extends State<SuccessCheck> with SingleTickerProviderStateMixin {
+class _SuccessCheckState extends State<SuccessCheck>
+    with SingleTickerProviderStateMixin {
   late AnimationController _ctrl;
   late Animation<double> _scale;
   late Animation<double> _checkDraw;
@@ -19,9 +20,18 @@ class _SuccessCheckState extends State<SuccessCheck> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
-    _scale = CurvedAnimation(parent: _ctrl, curve: const Interval(0, 0.5, curve: Curves.elasticOut));
-    _checkDraw = CurvedAnimation(parent: _ctrl, curve: const Interval(0.4, 0.9, curve: Curves.easeOut));
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
+    _scale = CurvedAnimation(
+      parent: _ctrl,
+      curve: const Interval(0, 0.5, curve: Curves.elasticOut),
+    );
+    _checkDraw = CurvedAnimation(
+      parent: _ctrl,
+      curve: const Interval(0.4, 0.9, curve: Curves.easeOut),
+    );
     _ctrl.forward();
   }
 
@@ -34,7 +44,9 @@ class _SuccessCheckState extends State<SuccessCheck> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     final color = widget.tone == 'green' ? AppColors.green : AppColors.primary;
-    final bgColor = widget.tone == 'green' ? AppColors.greenSurface : AppColors.primarySurface;
+    final bgColor = widget.tone == 'green'
+        ? AppColors.greenSurface
+        : AppColors.primarySurface;
 
     return ScaleTransition(
       scale: _scale,
@@ -48,19 +60,13 @@ class _SuccessCheckState extends State<SuccessCheck> with SingleTickerProviderSt
             Container(
               width: widget.size,
               height: widget.size,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: bgColor,
-              ),
+              decoration: BoxDecoration(shape: BoxShape.circle, color: bgColor),
             ),
             // Inner circle with check
             Container(
               width: widget.size * 0.66,
               height: widget.size * 0.66,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: color,
-              ),
+              decoration: BoxDecoration(shape: BoxShape.circle, color: color),
               child: Center(
                 child: AnimatedBuilder(
                   animation: _checkDraw,

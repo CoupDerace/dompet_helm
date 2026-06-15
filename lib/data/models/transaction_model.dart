@@ -1,4 +1,4 @@
-import 'package:dompet_helm/domain/entitas/transaction_entity.dart';
+import 'package:dompet_helm/domain/entities/transaction_entity.dart';
 
 class TransactionModel extends TransactionEntity {
   const TransactionModel({

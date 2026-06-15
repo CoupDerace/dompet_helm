@@ -3,7 +3,7 @@ import 'package:dompet_helm/core/error/failures.dart';
 import 'package:dompet_helm/data/datasources/local/secure_storage_datasource.dart';
 import 'package:dompet_helm/data/datasources/remote/auth_remote_datasource.dart';
 import 'package:dompet_helm/data/models/user_model.dart';
-import 'package:dompet_helm/domain/entitas/user_entity.dart';
+import 'package:dompet_helm/domain/entities/user_entity.dart';
 import 'package:dompet_helm/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {

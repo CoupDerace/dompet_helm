@@ -1,4 +1,13 @@
-
+import 'dart:async';
+import 'package:dompet_helm/presentation/widgets/app_button.dart';
+import 'package:dompet_helm/presentation/widgets/feature_icon.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:dompet_helm/core/theme/app_color.dart';
+import 'package:dompet_helm/presentation/blocs/auth/otp_bloc.dart';
+import 'package:dompet_helm/presentation/widgets/code_input.dart';
 
 class TwoFATotpPage extends StatefulWidget {
   final String mode;
@@ -60,26 +69,6 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
           );
         }
       },
-
-      @override
-  Widget build(BuildContext context) {
-    return BlocListener<OtpBloc, OtpState>(
-      listener: (context, state) {
-        if (state is OtpTotpSetup) {
-          setState(() => _step = 'scan');
-        } else if (state is OtpTotpEnabled || state is OtpVerified) {
-          context.go('/home');
-        } else if (state is OtpInvalid) {
-          setState(() => _hasError = true);
-          Future.delayed(const Duration(milliseconds: 650), () {
-            if (mounted) setState(() { _code = ''; _hasError = false; });
-          });
-        else if (state is OtpError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message), backgroundColor: AppColors.red),
-          );
-        }
-      },
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -115,8 +104,6 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
           ),
         ),
       ),
-    );
-  }
     );
   }
 
@@ -222,8 +209,6 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
                             fontSize: 13,
                           )),
                     ),
-                  ],
-                ),
                   ],
                 ),
               ],

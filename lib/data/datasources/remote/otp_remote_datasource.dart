@@ -1,6 +1,6 @@
 import 'package:dompet_helm/core/constants/api_endpoints.dart';
 import 'package:dompet_helm/core/network/api_client.dart';
-import 'package:dompet_helm/domain/entitas/otp_entity.dart';
+import 'package:dompet_helm/domain/entities/otp_entity.dart';
 
 abstract class OtpRemoteDatasource {
   Future<OtpSentEntity> sendOtpFirebase();

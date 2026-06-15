@@ -1,6 +1,6 @@
 import 'package:dompet_helm/core/error/failures.dart';
-import 'package:dompet_helm/domain/entitas/account_entity.dart';
-import 'package:dompet_helm/domain/entitas/transaction_entity.dart';
+import 'package:dompet_helm/domain/entities/account_entity.dart';
+import 'package:dompet_helm/domain/entities/transaction_entity.dart';
 import 'package:dompet_helm/domain/usecases/account/get_account_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

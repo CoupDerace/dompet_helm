@@ -1,5 +1,5 @@
 import 'package:dompet_helm/core/error/failures.dart';
-import 'package:dompet_helm/domain/entitas/otp_entity.dart';
+import 'package:dompet_helm/domain/entities/otp_entity.dart';
 import 'package:dompet_helm/domain/usecases/auth/send_otp_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

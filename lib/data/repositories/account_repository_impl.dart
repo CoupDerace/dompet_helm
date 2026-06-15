@@ -1,8 +1,8 @@
 import 'package:dompet_helm/core/error/exceptions.dart';
 import 'package:dompet_helm/core/error/failures.dart';
 import 'package:dompet_helm/data/datasources/remote/account_remote_datasource.dart';
-import 'package:dompet_helm/domain/entitas/account_entity.dart';
-import 'package:dompet_helm/domain/entitas/transaction_entity.dart';
+import 'package:dompet_helm/domain/entities/account_entity.dart';
+import 'package:dompet_helm/domain/entities/transaction_entity.dart';
 import 'package:dompet_helm/domain/repositories/account_repository.dart';
 
 class AccountRepositoryImpl implements AccountRepository {

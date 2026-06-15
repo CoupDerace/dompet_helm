@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_color.dart';
 import 'feature_icon.dart';
 
 class AppTabBar extends StatelessWidget {
@@ -32,8 +32,20 @@ class AppTabBar extends StatelessWidget {
         top: false,
         child: Row(
           children: [
-            _TabItem(icon: DkgIcons.home, label: 'Home', tabKey: 'home', active: active, onTap: onTab),
-            _TabItem(icon: DkgIcons.history, label: 'Riwayat', tabKey: 'history', active: active, onTap: onTab),
+            _TabItem(
+              icon: DkgIcons.home,
+              label: 'Home',
+              tabKey: 'home',
+              active: active,
+              onTap: onTab,
+            ),
+            _TabItem(
+              icon: DkgIcons.history,
+              label: 'Riwayat',
+              tabKey: 'history',
+              active: active,
+              onTap: onTab,
+            ),
             // Center scan button
             Expanded(
               child: Center(
@@ -47,13 +59,29 @@ class AppTabBar extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: AppColors.shadowPrimary,
                     ),
-                    child: const Icon(DkgIcons.scan, color: Colors.white, size: 26),
+                    child: const Icon(
+                      DkgIcons.scan,
+                      color: Colors.white,
+                      size: 26,
+                    ),
                   ),
                 ),
               ),
             ),
-            _TabItem(icon: DkgIcons.gift, label: 'Promo', tabKey: 'promo', active: active, onTap: onTab),
-            _TabItem(icon: DkgIcons.user, label: 'Akun', tabKey: 'akun', active: active, onTap: onTab),
+            _TabItem(
+              icon: DkgIcons.gift,
+              label: 'Promo',
+              tabKey: 'promo',
+              active: active,
+              onTap: onTab,
+            ),
+            _TabItem(
+              icon: DkgIcons.user,
+              label: 'Akun',
+              tabKey: 'akun',
+              active: active,
+              onTap: onTab,
+            ),
           ],
         ),
       ),

@@ -1,4 +1,7 @@
-
+import 'package:flutter/material.dart';
+import '../../../core/theme/app_color.dart';
+import '../../widgets/app_badge.dart';
+import '../../widgets/feature_icon.dart';
 
 class PromoPage extends StatelessWidget {
   const PromoPage({super.key});

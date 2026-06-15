@@ -1,6 +1,6 @@
 
 
-import 'package:dompet_helm/domain/entitas/otp_entity.dart';
+import 'package:dompet_helm/domain/entities/otp_entity.dart';
 import 'package:dompet_helm/domain/repositories/otp_repository.dart';
 
 class SendOtpFirebaseUsecase {

@@ -1,5 +1,5 @@
 import 'package:dompet_helm/core/error/failures.dart';
-import 'package:dompet_helm/domain/entitas/user_entity.dart';
+import 'package:dompet_helm/domain/entities/user_entity.dart';
 import 'package:dompet_helm/domain/repositories/auth_repository.dart';
 import 'package:dompet_helm/domain/usecases/auth/get_me_usecase.dart';
 import 'package:dompet_helm/domain/usecases/auth/logout_usecase.dart';

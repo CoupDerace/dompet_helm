@@ -1,6 +1,6 @@
 
 
-import 'package:dompet_helm/domain/entitas/payment_result_entity.dart';
+import 'package:dompet_helm/domain/entities/payment_result_entity.dart';
 import 'package:dompet_helm/domain/repositories/payment_repository.dart';
 
 class TopupUsecase {

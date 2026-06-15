@@ -1,4 +1,14 @@
-
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/error/failures.dart';
+import '../../../core/theme/app_color.dart';
+import '../../../domain/usecases/auth/send_otp_usecase.dart';
+import '../../../domain/usecases/auth/verify_email_otp_usecase.dart';
+import '../../../injection/injection_container.dart';
+import '../../widgets/code_input.dart';
+import '../../widgets/feature_icon.dart';
 
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({super.key});

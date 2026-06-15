@@ -1,4 +1,11 @@
-
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/theme/app_color.dart';
+import '../../../core/utils/currency_formatter.dart';
+import '../../widgets/app_avatar.dart';
+import '../../widgets/app_button.dart';
+import '../../widgets/app_logo.dart';
+import '../../widgets/app_top_bar.dart';
 
 class TransferConfirmPage extends StatelessWidget {
   final Map<String, dynamic> recipient;

@@ -1,4 +1,14 @@
+import 'package:dompet_helm/injection/injection_container.dart';
+import 'package:dompet_helm/presentation/widgets/feature_icon.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/error/failures.dart';
+import '../../../core/theme/app_color.dart';
+import '../../../domain/usecases/auth/register_with_otp_usecase.dart';
+import '../../widgets/app_button.dart';
+import '../../widgets/app_field.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
