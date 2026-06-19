@@ -1,4 +1,4 @@
-import 'package:dompet_helm/domain/entities/user_entity.dart';
+import '../entities/user_entity.dart';
 
 abstract class AuthRepository {
   Future<({UserEntity user, String token})> verifyFirebaseToken(String firebaseToken);
@@ -11,4 +11,5 @@ abstract class AuthRepository {
   Future<UserEntity?> getSavedUser();
   Future<void> setAuthVerified(bool verified);
   Future<bool> isAuthVerified();
+  Future<void> restoreApiToken();
 }

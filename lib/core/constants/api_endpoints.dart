@@ -25,6 +25,6 @@ class ApiEndpoints {
   static const String transactions = '$_base/account/transactions';
 
   // Payment
-  static const String topup = '$_base/topup';
-  static const String transfer = '$_base/transfer';
+  static const String topup = '$_base/payment/topup';
+  static const String transfer = '$_base/payment/transfer';
 }

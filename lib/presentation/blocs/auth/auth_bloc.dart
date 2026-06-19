@@ -1,11 +1,12 @@
-import 'package:dompet_helm/core/error/failures.dart';
-import 'package:dompet_helm/domain/entities/user_entity.dart';
-import 'package:dompet_helm/domain/repositories/auth_repository.dart';
-import 'package:dompet_helm/domain/usecases/auth/get_me_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/logout_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/verify_firebase_token_usecase.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../../../domain/entities/user_entity.dart';
+import '../../../domain/usecases/auth/verify_firebase_token_usecase.dart';
+import '../../../domain/usecases/auth/get_me_usecase.dart';
+import '../../../domain/usecases/auth/logout_usecase.dart';
+import '../../../domain/usecases/auth/send_otp_usecase.dart';
+import '../../../domain/repositories/auth_repository.dart';
+import '../../../core/error/failures.dart';
 
 // Events
 abstract class AuthEvent extends Equatable {
@@ -14,16 +15,13 @@ abstract class AuthEvent extends Equatable {
 }
 
 class AuthCheckRequested extends AuthEvent {}
-
 class AuthLoginWithFirebase extends AuthEvent {
   final String firebaseToken;
   AuthLoginWithFirebase(this.firebaseToken);
   @override
   List<Object?> get props => [firebaseToken];
 }
-
 class AuthLogoutRequested extends AuthEvent {}
-
 class AuthUpdateFcmToken extends AuthEvent {
   final String fcmToken;
   AuthUpdateFcmToken(this.fcmToken);
@@ -38,18 +36,14 @@ abstract class AuthState extends Equatable {
 }
 
 class AuthInitial extends AuthState {}
-
 class AuthLoading extends AuthState {}
-
 class AuthAuthenticated extends AuthState {
   final UserEntity user;
   AuthAuthenticated(this.user);
   @override
   List<Object?> get props => [user];
 }
-
 class AuthUnauthenticated extends AuthState {}
-
 class AuthNeedsVerification extends AuthState {
   final UserEntity user;
   final String token;
@@ -57,7 +51,6 @@ class AuthNeedsVerification extends AuthState {
   @override
   List<Object?> get props => [user, token];
 }
-
 class AuthError extends AuthState {
   final String message;
   AuthError(this.message);
@@ -76,27 +69,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required GetMeUsecase getMe,
     required LogoutUsecase logout,
     required AuthRepository authRepo,
-  }) : _verifyToken = verifyToken,
-       _getMe = getMe,
-       _logout = logout,
-       _authRepo = authRepo,
-       super(AuthInitial()) {
+  })  : _verifyToken = verifyToken,
+        _getMe = getMe,
+        _logout = logout,
+        _authRepo = authRepo,
+        super(AuthInitial()) {
     on<AuthCheckRequested>(_onCheckRequested);
     on<AuthLoginWithFirebase>(_onLoginWithFirebase);
     on<AuthLogoutRequested>(_onLogout);
     on<AuthUpdateFcmToken>(_onUpdateFcm);
   }
 
-  Future<void> _onCheckRequested(
-    AuthCheckRequested event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onCheckRequested(AuthCheckRequested event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     final token = await _authRepo.getSavedToken();
     if (token == null) {
       emit(AuthUnauthenticated());
       return;
     }
+    // Pastikan ApiClient memiliki token sebelum request berikutnya —
+    // diperlukan jika app di-restart karena ApiClient dibuat ulang tanpa token.
+    await _authRepo.restoreApiToken();
     final user = await _authRepo.getSavedUser();
     if (user == null) {
       emit(AuthUnauthenticated());
@@ -113,12 +106,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthAuthenticated(user));
   }
 
-  Future<void> _onLoginWithFirebase(
-    AuthLoginWithFirebase event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onLoginWithFirebase(AuthLoginWithFirebase event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
-    try{
+    try {
       final result = await _verifyToken(event.firebaseToken);
       emit(AuthNeedsVerification(result.user, result.token));
     } on AuthFailure catch (e) {
@@ -136,7 +126,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await _logout();
     emit(AuthUnauthenticated());
   }
-  
+
   Future<void> _onUpdateFcm(AuthUpdateFcmToken event, Emitter<AuthState> emit) async {
     await _authRepo.updateFcmToken(event.fcmToken);
   }

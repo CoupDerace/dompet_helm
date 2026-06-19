@@ -1,17 +1,14 @@
-import 'package:dompet_helm/core/constants/api_endpoints.dart';
-import 'package:dompet_helm/core/network/api_client.dart';
-import 'package:dompet_helm/data/models/user_model.dart';
+import '../../../core/constants/api_endpoints.dart';
+import '../../../core/network/api_client.dart';
+import '../../models/user_model.dart';
 
 abstract class AuthRemoteDatasource {
-  Future<({UserModel user, String token})> verifyFirebaseToken(
-    String firebaseToken,
-  );
-  Future<({UserModel user, String token})> registerWithOtp(
-    String firebaseToken,
-  );
+  Future<({UserModel user, String token})> verifyFirebaseToken(String firebaseToken);
+  Future<({UserModel user, String token})> registerWithOtp(String firebaseToken);
   Future<void> verifyEmailOtp(String code);
   Future<UserModel> getMe();
   Future<void> updateFcmToken(String fcmToken);
+  void setAuthToken(String token);
   void clearAuthToken();
 }
 
@@ -59,6 +56,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   @override
   Future<void> updateFcmToken(String fcmToken) async {
     await _client.put(ApiEndpoints.fcmToken, data: {'fcm_token': fcmToken});
+  }
+
+  @override
+  void setAuthToken(String token) {
+    _client.setAuthToken(token);
   }
 
   @override

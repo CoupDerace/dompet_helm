@@ -1,31 +1,32 @@
-import 'package:dompet_helm/core/network/api_client.dart';
-import 'package:dompet_helm/data/datasources/local/secure_storage_datasource.dart';
-import 'package:dompet_helm/data/datasources/remote/account_remote_datasource.dart';
-import 'package:dompet_helm/data/datasources/remote/auth_remote_datasource.dart';
-import 'package:dompet_helm/data/datasources/remote/otp_remote_datasource.dart';
-import 'package:dompet_helm/data/datasources/remote/payment_remote_datasource.dart';
-import 'package:dompet_helm/data/repositories/account_repository_impl.dart';
-import 'package:dompet_helm/data/repositories/auth_repository_impl.dart';
-import 'package:dompet_helm/data/repositories/otp_repository_impl.dart';
-import 'package:dompet_helm/data/repositories/payment_repository_impl.dart';
-import 'package:dompet_helm/domain/repositories/account_repository.dart';
-import 'package:dompet_helm/domain/repositories/auth_repository.dart';
-import 'package:dompet_helm/domain/repositories/otp_repository.dart';
-import 'package:dompet_helm/domain/repositories/payment_repository.dart';
-import 'package:dompet_helm/domain/usecases/account/get_account_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/get_me_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/logout_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/register_with_otp_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/send_otp_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/verify_email_otp_usecase.dart';
-import 'package:dompet_helm/domain/usecases/auth/verify_firebase_token_usecase.dart';
-import 'package:dompet_helm/domain/usecases/payment/payment_usecase.dart';
-import 'package:dompet_helm/presentation/blocs/account/account_bloc.dart';
-import 'package:dompet_helm/presentation/blocs/auth/auth_bloc.dart';
-import 'package:dompet_helm/presentation/blocs/auth/otp_bloc.dart';
-import 'package:dompet_helm/presentation/blocs/payment/payment_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import '../core/constants/app_constant.dart';
+import '../core/network/api_client.dart';
+import '../data/datasources/local/secure_storage_datasource.dart';
+import '../data/datasources/remote/account_remote_datasource.dart';
+import '../data/datasources/remote/auth_remote_datasource.dart';
+import '../data/datasources/remote/otp_remote_datasource.dart';
+import '../data/datasources/remote/payment_remote_datasource.dart';
+import '../data/repositories/account_repository_impl.dart';
+import '../data/repositories/auth_repository_impl.dart';
+import '../data/repositories/otp_repository_impl.dart';
+import '../data/repositories/payment_repository_impl.dart';
+import '../domain/repositories/account_repository.dart';
+import '../domain/repositories/auth_repository.dart';
+import '../domain/repositories/otp_repository.dart';
+import '../domain/repositories/payment_repository.dart';
+import '../domain/usecases/account/get_account_usecase.dart';
+import '../domain/usecases/auth/get_me_usecase.dart';
+import '../domain/usecases/auth/logout_usecase.dart';
+import '../domain/usecases/auth/register_with_otp_usecase.dart';
+import '../domain/usecases/auth/send_otp_usecase.dart';
+import '../domain/usecases/auth/verify_email_otp_usecase.dart';
+import '../domain/usecases/auth/verify_firebase_token_usecase.dart';
+import '../domain/usecases/payment/payment_usecase.dart';
+import '../presentation/blocs/account/account_bloc.dart';
+import '../presentation/blocs/auth/auth_bloc.dart';
+import '../presentation/blocs/auth/otp_bloc.dart';
+import '../presentation/blocs/payment/payment_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -35,15 +36,19 @@ Future<void> init() async {
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
   );
 
-  // Core
-  sl.registerLazySingleton<ApiClient>(() => ApiClient());
+  // Pulihkan sesi yang tersimpan agar ApiClient punya token
+  // sejak awal — penting untuk cold-start via deeplink yang melewati SplashPage.
+  final savedToken = await secureStorage.read(key: AppConstants.kJwtToken);
 
-  // Local Data Source
+  // Core
+  sl.registerLazySingleton<ApiClient>(() => ApiClient(token: savedToken));
+
+  // Local datasource
   sl.registerLazySingleton<SecureStorageDatasource>(
     () => SecureStorageDatasourceImpl(secureStorage),
   );
 
-  // Remote Data Source
+  // Remote datasources
   sl.registerLazySingleton<AuthRemoteDatasource>(
     () => AuthRemoteDatasourceImpl(sl()),
   );
@@ -57,11 +62,13 @@ Future<void> init() async {
     () => PaymentRemoteDatasourceImpl(sl()),
   );
 
-  // Repository
+  // Repositories
   sl.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(sl(), sl()),
   );
-  sl.registerLazySingleton<OtpRepository>(() => OtpRepositoryImpl(sl(), sl()));
+  sl.registerLazySingleton<OtpRepository>(
+    () => OtpRepositoryImpl(sl(), sl()),
+  );
   sl.registerLazySingleton<AccountRepository>(
     () => AccountRepositoryImpl(sl()),
   );
@@ -69,7 +76,7 @@ Future<void> init() async {
     () => PaymentRepositoryImpl(sl()),
   );
 
-  // Usecase - Auth
+  // Use Cases — Auth
   sl.registerLazySingleton(() => VerifyFirebaseTokenUsecase(sl()));
   sl.registerLazySingleton(() => RegisterWithOtpUsecase(sl()));
   sl.registerLazySingleton(() => VerifyEmailOtpUsecase(sl()));
@@ -96,21 +103,18 @@ Future<void> init() async {
         logout: sl(),
         authRepo: sl(),
       ));
-
-      sl.registerFactory(() => OtpBloc(
+  sl.registerFactory(() => OtpBloc(
         sendFirebase: sl(),
         sendEmail: sl(),
         confirm: sl(),
         registerTotp: sl(),
         verifyTotp: sl(),
       ));
-
-      sl.registerFactory(() => AccountBloc(
+  sl.registerFactory(() => AccountBloc(
         getAccount: sl(),
         getTransactions: sl(),
       ));
-
-      sl.registerFactory(() => PaymentBloc(
+  sl.registerFactory(() => PaymentBloc(
         topup: sl(),
         transfer: sl(),
       ));
