@@ -1,3 +1,4 @@
+import 'package:dompet_helm/core/services/deeplink_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +26,13 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthAuthenticated) {
-          context.go('/home');
+          final pending = DeeplinkService.consumePending();
+
+          if (pending != null) {
+            context.go('/pay', extra: pending);
+          } else {
+            context.go('/home');
+          }
         } else if (state is AuthUnauthenticated) {
           // Stay on splash to show welcome
         }

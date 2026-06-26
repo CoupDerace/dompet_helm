@@ -412,66 +412,51 @@ class _HomePageState extends State<HomePage> {
     return GestureDetector(
       onTap: () => context.go('/merchant'),
       child: Container(
+        height: 100,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFF0E1726), Color(0xFF21314D)],
-          ),
           borderRadius: BorderRadius.circular(20),
+          image: const DecorationImage(
+            image: AssetImage('assets/images/banner_merchant.png'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
+          ),
         ),
         padding: const EdgeInsets.all(16),
-        child: Stack(
-          clipBehavior: Clip.none,
+        child: Row(
           children: [
-            Positioned(
-              right: -30,
-              top: -40,
-              child: Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0xFF5B9BFF).withValues(alpha: 0.18),
-                ),
+            Container(
+              width: 46,
+              height: 46,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: const Icon(Icons.link_rounded, size: 24, color: Colors.white),
+            ),
+            const SizedBox(width: 13),
+            const Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Coba bayar dari toko online',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 14.5,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      )),
+                  const SizedBox(height: 2),
+                  const Text('Simulasi checkout via DKG',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 12.5,
+                        color: Colors.white70,
+                      )),
+                ],
               ),
             ),
-            Row(
-              children: [
-                Container(
-                  width: 46,
-                  height: 46,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: const Icon(Icons.link_rounded, size: 24, color: Color(0xFF5B9BFF)),
-                ),
-                const SizedBox(width: 13),
-                const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Coba bayar dari toko online',
-                          style: TextStyle(
-                            fontFamily: 'PlusJakartaSans',
-                            fontSize: 14.5,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          )),
-                      SizedBox(height: 2),
-                      Text('Simulasi checkout e-commerce → bayar via DKG',
-                          style: TextStyle(
-                            fontFamily: 'PlusJakartaSans',
-                            fontSize: 12.5,
-                            color: Colors.white70,
-                          )),
-                    ],
-                  ),
-                ),
-                const Icon(Icons.chevron_right_rounded, size: 20, color: Colors.white60),
-              ],
-            ),
+            const Icon(Icons.chevron_right_rounded, size: 20, color: Colors.white),
           ],
         ),
       ),
@@ -511,11 +496,23 @@ class _HomePageState extends State<HomePage> {
             boxShadow: AppColors.shadowSoft,
           ),
           child: txns.isEmpty
-              ? const Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Center(
-                    child: Text('Belum ada transaksi',
-                        style: TextStyle(color: AppColors.slate400, fontFamily: 'PlusJakartaSans')),
+              ? Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/empty_tx.png', height: 100),
+                      const SizedBox(height: 12),
+                      const Text('Belum ada transaksi',
+                          style: TextStyle(
+                              color: AppColors.slate500,
+                              fontFamily: 'PlusJakartaSans',
+                              fontWeight: FontWeight.w600)),
+                      const Text('Lakukan transaksi pertamamu sekarang',
+                          style: TextStyle(
+                              color: AppColors.slate400,
+                              fontSize: 12,
+                              fontFamily: 'PlusJakartaSans')),
+                    ],
                   ),
                 )
               : Column(

@@ -46,7 +46,7 @@ class _SuccessPageState extends State<SuccessPage> {
                 child: Column(
                   children: [
                     const Spacer(),
-                    const SuccessCheck(),
+                    Image.asset('assets/images/success_payment.png', height: 160),
                     const SizedBox(height: 24),
                     Text(widget.title,
                         textAlign: TextAlign.center,

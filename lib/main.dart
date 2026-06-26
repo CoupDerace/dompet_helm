@@ -1,3 +1,4 @@
+import 'package:dompet_helm/core/services/deeplink_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,9 +16,17 @@ void main() async {
   // Initialize Firebase — pastikan google-services.json/GoogleService-Info.plist sudah ada
   await Firebase.initializeApp();
 
+  print('=== MAIN START ===');
+
   // Initialize dependency injection
   await di.init();
 
+  print('=== BEFORE DEEPLINK INIT ===');
+
+  await DeeplinkService(AppRouter.router).init();
+
+  print('=== AFTER DEEPLINK INIT ===');
+  
   // Set preferred orientations
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

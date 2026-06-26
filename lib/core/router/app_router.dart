@@ -219,6 +219,7 @@ class AppRouter {
         BlocProvider(create: (_) => sl<AuthBloc>()),
         BlocProvider(create: (_) => sl<AccountBloc>()),
         BlocProvider(create: (_) => sl<PaymentBloc>()),
+        BlocProvider(create: (_) => sl<OtpBloc>()), 
       ],
       child: child,
     );
