@@ -109,7 +109,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     final email = FirebaseAuth.instance.currentUser?.email ?? 'email kamu';
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bg,
       body: SafeArea(
         child: Column(
           children: [
@@ -148,7 +148,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                             decoration: BoxDecoration(
                               color: AppColors.green,
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 3),
+                              border: Border.all(color: AppColors.white, width: 3),
                             ),
                             child: const Icon(DkgIcons.check, size: 13, color: Colors.white),
                           ),

@@ -52,7 +52,7 @@ class _SplashPageState extends State<SplashPage> {
                     height: 320,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withValues(alpha: 0.08),
+                      color: AppColors.white.withValues(alpha: 0.08),
                     ),
                   ),
                 ),
@@ -64,7 +64,7 @@ class _SplashPageState extends State<SplashPage> {
                     height: 220,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withValues(alpha: 0.07),
+                      color: AppColors.white.withValues(alpha: 0.07),
                     ),
                   ),
                 ),
@@ -136,3 +136,4 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 }
+

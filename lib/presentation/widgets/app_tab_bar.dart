@@ -19,7 +19,7 @@ class AppTabBar extends StatelessWidget {
     return Container(
       height: 64 + MediaQuery.of(context).padding.bottom,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.06),
@@ -135,3 +135,4 @@ class _TabItem extends StatelessWidget {
     );
   }
 }
+

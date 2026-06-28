@@ -38,7 +38,7 @@ class _TransferPageState extends State<TransferPage> {
       body: Column(
         children: [
           Container(
-            color: Colors.white,
+            color: AppColors.white,
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 0),
             child: Column(
               children: [
@@ -106,7 +106,7 @@ class _TransferPageState extends State<TransferPage> {
         ),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(18),
             boxShadow: AppColors.shadowSoft,
           ),
@@ -167,7 +167,7 @@ class _TransferPageState extends State<TransferPage> {
     return Container(
       margin: const EdgeInsets.only(top: 8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: AppColors.shadowSoft,
       ),
@@ -233,3 +233,5 @@ class _TransferPageState extends State<TransferPage> {
     );
   }
 }
+
+

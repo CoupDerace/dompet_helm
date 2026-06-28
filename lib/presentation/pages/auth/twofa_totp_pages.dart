@@ -70,7 +70,7 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.bg,
         body: SafeArea(
           child: Column(
             children: [
@@ -133,7 +133,7 @@ class _TwoFATotpPageState extends State<TwoFATotpPage> {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(18),
               boxShadow: AppColors.shadowCard,
               border: Border.all(color: AppColors.line),

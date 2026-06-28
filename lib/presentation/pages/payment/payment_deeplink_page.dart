@@ -73,7 +73,7 @@ class PaymentDeeplinkPage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: AppColors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
@@ -103,7 +103,7 @@ class PaymentDeeplinkPage extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 24),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -132,7 +132,7 @@ class PaymentDeeplinkPage extends StatelessWidget {
                   // Detail
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -167,7 +167,7 @@ class PaymentDeeplinkPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                       border: Border.all(color: AppColors.primaryLight, width: 1.8),
@@ -229,7 +229,7 @@ class PaymentDeeplinkPage extends StatelessWidget {
           ),
           // Pay bar
           Container(
-            color: Colors.white,
+            color: AppColors.white,
             padding: EdgeInsets.fromLTRB(16, 12, 16, MediaQuery.of(context).padding.bottom + 16),
             child: AppButton(
               label: 'Bayar ${CurrencyFormatter.format(payload.amount)}',
@@ -285,7 +285,7 @@ class _ErrorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bg,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -328,3 +328,5 @@ class _ErrorView extends StatelessWidget {
     );
   }
 }
+
+

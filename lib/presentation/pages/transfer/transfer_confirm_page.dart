@@ -42,7 +42,7 @@ class TransferConfirmPage extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.fromLTRB(18, 22, 18, 22),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -96,7 +96,7 @@ class TransferConfirmPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -119,7 +119,7 @@ class TransferConfirmPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(13),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -200,3 +200,4 @@ class _Line extends StatelessWidget {
     );
   }
 }
+

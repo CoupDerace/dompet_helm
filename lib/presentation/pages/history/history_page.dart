@@ -26,7 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
       body: Column(
         children: [
           Container(
-            color: Colors.white,
+            color: AppColors.white,
             padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).padding.top + 12, 20, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +111,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: AppColors.white,
                                     borderRadius: BorderRadius.circular(20),
                                     boxShadow: AppColors.shadowSoft,
                                   ),
@@ -138,3 +138,4 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 }
+

@@ -111,7 +111,7 @@ class _CodeInputState extends State<CodeInput> {
                       horizontal: horizontalMargin,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(13),
                       border: Border.all(
                         color: widget.hasError
@@ -165,3 +165,4 @@ class _CodeInputState extends State<CodeInput> {
     );
   }
 }
+

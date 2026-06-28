@@ -113,7 +113,7 @@ class _TopUpPageState extends State<TopUpPage> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: AppColors.shadowSoft,
                       ),
@@ -161,7 +161,7 @@ class _TopUpPageState extends State<TopUpPage> {
                                                   height: 8,
                                                   decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    color: Colors.white,
+                                                    color: AppColors.white,
                                                   ),
                                                 ),
                                               )
@@ -203,3 +203,4 @@ class _TopUpPageState extends State<TopUpPage> {
     return _methods.firstWhere((m) => m['id'] == _method)['name'] as String;
   }
 }
+

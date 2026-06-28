@@ -114,7 +114,7 @@ class _PaymentQrPageState extends State<PaymentQrPage> {
                       height: 34,
                       decoration: BoxDecoration(
                         border: Border(
-                          top: corner[1] == 0 ? const BorderSide(color: Colors.white, width: 3) : BorderSide.none,
+                          top: corner[1] == 0 ? const BorderSide(color: AppColors.white, width: 3) : BorderSide.none,
                           bottom: corner[1] == 1 ? const BorderSide(color: Colors.white, width: 3) : BorderSide.none,
                           left: corner[0] == 0 ? const BorderSide(color: Colors.white, width: 3) : BorderSide.none,
                           right: corner[0] == 1 ? const BorderSide(color: Colors.white, width: 3) : BorderSide.none,
@@ -162,7 +162,7 @@ class _PaymentQrPageState extends State<PaymentQrPage> {
                       width: 48,
                       height: 48,
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.12),
+                        color: AppColors.white.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Icon(
@@ -199,7 +199,7 @@ class _PaymentQrPageState extends State<PaymentQrPage> {
         onTap: () {},
         child: Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.only(topLeft: Radius.circular(26), topRight: Radius.circular(26)),
           ),
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 26),

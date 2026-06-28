@@ -20,7 +20,7 @@ class PromoPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            color: Colors.white,
+            color: AppColors.white,
             padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).padding.top + 12, 20, 18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class PromoPage extends StatelessWidget {
                           height: 140,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white.withValues(alpha: 0.1),
+                            color: AppColors.white.withValues(alpha: 0.1),
                           ),
                         ),
                       ),
@@ -92,7 +92,7 @@ class PromoPage extends StatelessWidget {
                 ...promos.map((p) => Container(
                       margin: const EdgeInsets.only(bottom: 12),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: AppColors.shadowSoft,
                       ),
@@ -134,3 +134,5 @@ class PromoPage extends StatelessWidget {
     );
   }
 }
+
+

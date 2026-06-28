@@ -133,7 +133,7 @@ class _KeyButton extends StatelessWidget {
       child: Container(
         height: 62,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(18),
           boxShadow: AppColors.shadowSoft,
         ),
@@ -142,3 +142,4 @@ class _KeyButton extends StatelessWidget {
     );
   }
 }
+

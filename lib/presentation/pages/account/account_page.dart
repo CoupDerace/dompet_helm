@@ -65,7 +65,7 @@ class AccountPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.18),
+                          color: AppColors.white.withValues(alpha: 0.18),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: const Row(
@@ -104,7 +104,7 @@ class AccountPage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.white,
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: AppColors.shadowSoft,
                         ),
@@ -151,7 +151,7 @@ class AccountPage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.white,
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: AppColors.shadowSoft,
                         ),
@@ -172,7 +172,7 @@ class AccountPage extends StatelessWidget {
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppColors.white,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: AppColors.shadowSoft,
                           ),
@@ -300,7 +300,7 @@ class _ToggleState extends State<_Toggle> {
             width: 20,
             height: 20,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               shape: BoxShape.circle,
               boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 3, offset: Offset(0, 1))],
             ),

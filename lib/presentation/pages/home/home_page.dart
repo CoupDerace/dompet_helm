@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                                   width: 42,
                                   height: 42,
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withValues(alpha: 0.18),
+                                    color: AppColors.white.withValues(alpha: 0.18),
                                     borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: const Icon(Icons.notifications_outlined,
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                     decoration: BoxDecoration(
                                       color: AppColors.amber,
                                       shape: BoxShape.circle,
-                                      border: Border.all(color: Colors.white, width: 2),
+                                      border: Border.all(color: AppColors.white, width: 2),
                                     ),
                                   ),
                                 ),
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(22),
         boxShadow: AppColors.shadowCard,
       ),
@@ -291,7 +291,7 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: AppColors.shadowSoft,
             ),
@@ -326,7 +326,7 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: AppColors.shadowSoft,
             ),
@@ -373,7 +373,7 @@ class _HomePageState extends State<HomePage> {
     ];
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: AppColors.shadowSoft,
       ),
@@ -428,7 +428,7 @@ class _HomePageState extends State<HomePage> {
               width: 46,
               height: 46,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.12),
+                color: AppColors.white.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: const Icon(Icons.link_rounded, size: 24, color: Colors.white),
@@ -491,7 +491,7 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(height: 13),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(20),
             boxShadow: AppColors.shadowSoft,
           ),
@@ -529,3 +529,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+

@@ -50,7 +50,7 @@ class _TransferAmountPageState extends State<TransferAmountPage> {
     final valid = _amount >= 1000 && enough;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bg,
       appBar: AppTopBar(title: 'Nominal Transfer', onBack: () => context.go('/transfer')),
       body: Column(
         children: [
@@ -72,7 +72,7 @@ class _TransferAmountPageState extends State<TransferAmountPage> {
                               width: 42,
                               height: 42,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: AppColors.white,
                                 borderRadius: BorderRadius.circular(11),
                               ),
                               child: Center(
@@ -162,7 +162,7 @@ class _TransferAmountPageState extends State<TransferAmountPage> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppColors.white,
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(color: AppColors.line, width: 1.4),
                             ),
@@ -221,3 +221,4 @@ extension on int {
     );
   }
 }
+

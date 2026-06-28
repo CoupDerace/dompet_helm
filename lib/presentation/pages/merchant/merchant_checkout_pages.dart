@@ -46,7 +46,7 @@ class MerchantCheckoutPage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: AppColors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Row(
@@ -74,7 +74,7 @@ class MerchantCheckoutPage extends StatelessWidget {
                   // Order items
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -167,7 +167,7 @@ class MerchantCheckoutPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                       border: Border.all(color: AppColors.primaryLight, width: 1.8),
@@ -201,7 +201,7 @@ class MerchantCheckoutPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: AppColors.shadowSoft,
                     ),
@@ -242,7 +242,7 @@ class MerchantCheckoutPage extends StatelessWidget {
           ),
           // Pay bar
           Container(
-            color: Colors.white,
+            color: AppColors.white,
             padding: EdgeInsets.fromLTRB(16, 12, 16, MediaQuery.of(context).padding.bottom + 16),
             child: AppButton(
               label: 'Bayar ${CurrencyFormatter.format(total)}',
@@ -280,3 +280,4 @@ class _TotalLine extends StatelessWidget {
     );
   }
 }
+

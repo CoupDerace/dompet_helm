@@ -64,7 +64,7 @@ class _Setup2FAPageState extends State<Setup2FAPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bg,
       body: SafeArea(
         child: Column(
           children: [
@@ -192,7 +192,7 @@ class _Setup2FAPageState extends State<Setup2FAPage> {
                                       height: 9,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Colors.white,
+                                        color: AppColors.white,
                                       ),
                                     ),
                                   )
