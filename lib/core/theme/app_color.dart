@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors{
-  // Primary Amber
-  static const Color primary = Color(0xFFFFBF00); // Amber
-  static const Color primaryLight = Color(0xFFFFCF40);
-  static const Color primaryDark = Color(0xFFC99700);
-  static const Color primarySurface = Color(0xFFFFF3CC);
-  static const Color primaryBorder = Color(0xFFFFE699);
+  // Primary Amber (Premium)
+  static const Color primary = Color(0xFFF59E0B); // Golden Amber
+  static const Color primaryLight = Color(0xFFFBBF24); // Soft Amber
+  static const Color primaryDark = Color(0xFFD97706); // Deep Amber
+  static const Color primarySurface = Color(0xFF452703); // Subtle Amber glow for dark mode
+  static const Color primaryBorder = Color(0xFF78350F); // Dark Amber border
 
   // Semantic
   static const Color green = Color(0xFF16A571);
@@ -18,26 +18,26 @@ class AppColors{
   static const Color violet = Color(0xFF7A5AF8);
   static const Color violetSurface = Color(0xFF241C42);
 
-  // Neutral (Now Mapped to Dark Mode)
-  static const Color ink = Color(0xFFEEEEEE); // was 0xFF0E1726
-  static const Color slate600 = Color(0xFFAAAAAA);
-  static const Color slate500 = Color(0xFF888888);
-  static const Color slate400 = Color(0xFF666666);
-  static const Color slate300 = Color(0xFF444444);
-  static const Color line = Color(0xFF3A3A3A);
-  static const Color line2 = Color(0xFF2C2C2C);
-  static const Color bg = Color(0xFF121212); // darkBackground
-  static const Color white = Color(0xFF1E1E1E); // darkSurface
+  // Neutral (Refined Dark Mode)
+  static const Color ink = Color(0xFFF3F4F6); // Soft White for better readability
+  static const Color slate600 = Color(0xFF9CA3AF); // Cool Gray for secondary text
+  static const Color slate500 = Color(0xFF6B7280); // Muted Gray
+  static const Color slate400 = Color(0xFF4B5563); // Darker Gray
+  static const Color slate300 = Color(0xFF374151); // Deep Gray
+  static const Color line = Color(0xFF27272A); // Subtle border
+  static const Color line2 = Color(0xFF1F1F22); // Very subtle separator
+  static const Color bg = Color(0xFF09090B); // Very dark gray/zinc
+  static const Color white = Color(0xFF18181B); // Dark gray surface
 
   // Dark Mode Colors
-  static const Color darkBackground  = Color(0xFF121212); // latar halaman
-  static const Color darkSurface     = Color(0xFF1E1E1E); // AppBar, bottom nav
-  static const Color darkSurfaceCard = Color(0xFF2C2C2C); // kartu, input field
-  static const Color darkTextPrimary   = Color(0xFFEEEEEE);
-  static const Color darkTextSecondary = Color(0xFFAAAAAA);
-  static const Color darkTextHint      = Color(0xFF666666);
-  static const Color darkDivider = Color(0xFF3A3A3A);
-  static const Color darkBorder  = Color(0xFF3A3A3A);
+  static const Color darkBackground  = Color(0xFF09090B); // latar halaman
+  static const Color darkSurface     = Color(0xFF18181B); // AppBar, bottom nav
+  static const Color darkSurfaceCard = Color(0xFF27272A); // kartu, input field
+  static const Color darkTextPrimary   = Color(0xFFF3F4F6);
+  static const Color darkTextSecondary = Color(0xFF9CA3AF);
+  static const Color darkTextHint      = Color(0xFF52525B);
+  static const Color darkDivider = Color(0xFF27272A);
+  static const Color darkBorder  = Color(0xFF3F3F46);
 
   // Gradient
   static const LinearGradient primaryGradient = LinearGradient(
