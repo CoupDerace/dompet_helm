@@ -36,7 +36,7 @@ void main() async {
   // Status bar style
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
+    statusBarIconBrightness: Brightness.light,
   ));
 
   runApp(const DompetKampusApp());
@@ -50,7 +50,8 @@ class DompetKampusApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Dompet Kampus Global',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
+      theme: AppTheme.dark,
+      themeMode: ThemeMode.dark,
       routerConfig: AppRouter.router,
     );
   }

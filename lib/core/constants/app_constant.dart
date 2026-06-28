@@ -4,7 +4,7 @@ class AppConstants {
 
   // API
   static const String baseUrl =
-      'http://10.188.101.205:8081'; // Android emulator → localhost
+      'http://10.82.187.204:8081'; // Android emulator → localhost
   static const String apiVersion = '/v1';
   static const int connectTimeout = 30;
   static const int receiveTimeout = 30;
