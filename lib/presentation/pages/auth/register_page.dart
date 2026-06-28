@@ -147,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             width: 22,
                             height: 22,
                             decoration: BoxDecoration(
-                              color: _agree ? AppColors.primary : Colors.white,
+                              color: _agree ? AppColors.primary  : AppColors.white,
                               borderRadius: BorderRadius.circular(7),
                               border: Border.all(
                                 color: _agree ? AppColors.primary : AppColors.line,
@@ -221,3 +221,4 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
+

@@ -80,7 +80,7 @@ class _TopUpPageState extends State<TopUpPage> {
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             decoration: BoxDecoration(
-                              color: selected ? AppColors.primarySurface : Colors.white,
+                              color: selected ? AppColors.primarySurface  : AppColors.white,
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
                                 color: selected ? AppColors.primaryLight : AppColors.line,
@@ -148,7 +148,7 @@ class _TopUpPageState extends State<TopUpPage> {
                                         height: 20,
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: selected ? AppColors.primary : Colors.white,
+                                          color: selected ? AppColors.primary  : AppColors.white,
                                           border: Border.all(
                                             color: selected ? AppColors.primary : AppColors.line,
                                             width: 2,
@@ -203,4 +203,5 @@ class _TopUpPageState extends State<TopUpPage> {
     return _methods.firstWhere((m) => m['id'] == _method)['name'] as String;
   }
 }
+
 
