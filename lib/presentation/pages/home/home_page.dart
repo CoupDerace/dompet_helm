@@ -389,7 +389,7 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.ink,
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           GridView.count(
             crossAxisCount: 4,
             shrinkWrap: true,
