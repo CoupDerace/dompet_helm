@@ -35,7 +35,7 @@ class AppRouter {
 
   static GoRouter get router => GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/splash',
+    initialLocation: '/',
     routes: [
       GoRoute(path: '/', builder: (_, __) => _withAuth(const SplashPage())),
       GoRoute(path: '/login', builder: (_, __) => _withAuth(const LoginPage())),
