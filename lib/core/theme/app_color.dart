@@ -19,11 +19,11 @@ class AppColors{
   static const Color violetSurface = Color(0xFF241C42);
 
   // Neutral (Refined Dark Mode)
-  static const Color ink = Color(0xFFF3F4F6); // Soft White for better readability
-  static const Color slate600 = Color(0xFF9CA3AF); // Cool Gray for secondary text
-  static const Color slate500 = Color(0xFF6B7280); // Muted Gray
-  static const Color slate400 = Color(0xFF4B5563); // Darker Gray
-  static const Color slate300 = Color(0xFF374151); // Deep Gray
+  static const Color ink = Color(0xFFFFFFFF); // Pure White for sharp readability
+  static const Color slate600 = Color(0xFFE2E8F0); // Very clear secondary text
+  static const Color slate500 = Color(0xFFCBD5E1); // Clear muted text
+  static const Color slate400 = Color(0xFF94A3B8); // Standard secondary text
+  static const Color slate300 = Color(0xFF64748B); // Dim text
   static const Color line = Color(0xFF27272A); // Subtle border
   static const Color line2 = Color(0xFF1F1F22); // Very subtle separator
   static const Color bg = Color(0xFF09090B); // Very dark gray/zinc
