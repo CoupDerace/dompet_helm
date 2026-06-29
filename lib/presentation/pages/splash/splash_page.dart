@@ -43,28 +43,69 @@ class _SplashPageState extends State<SplashPage> {
           child: SafeArea(
             child: Stack(
               children: [
-                // Decorative circles
+                // Glowing Ambient Motif
                 Positioned(
-                  top: -120,
-                  right: -90,
+                  top: -150,
+                  right: -100,
                   child: Container(
-                    width: 320,
-                    height: 320,
+                    width: 400,
+                    height: 400,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.black.withValues(alpha: 0.08),
+                      gradient: RadialGradient(
+                        colors: [
+                          AppColors.primary.withValues(alpha: 0.15),
+                          Colors.transparent,
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 Positioned(
-                  bottom: 120,
-                  left: -100,
+                  bottom: -100,
+                  left: -150,
                   child: Container(
-                    width: 220,
-                    height: 220,
+                    width: 500,
+                    height: 500,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.black.withValues(alpha: 0.07),
+                      gradient: RadialGradient(
+                        colors: [
+                          AppColors.primary.withValues(alpha: 0.10),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                // Decorative circles / Geometric pattern
+                Positioned(
+                  top: 80,
+                  left: -40,
+                  child: Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.white.withValues(alpha: 0.3),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 250,
+                  right: -50,
+                  child: Container(
+                    width: 180,
+                    height: 180,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.primary.withValues(alpha: 0.2),
+                        width: 1,
+                      ),
                     ),
                   ),
                 ),
@@ -74,7 +115,7 @@ class _SplashPageState extends State<SplashPage> {
                   child: Column(
                     children: [
                       const Spacer(),
-                      const AppLogo(size: 92, light: false),
+                      const AppLogo(size: 92, light: true),
                       const SizedBox(height: 26),
                       const Text(
                         'Dompet Kampus',
@@ -82,7 +123,7 @@ class _SplashPageState extends State<SplashPage> {
                           fontFamily: 'PlusJakartaSans',
                           fontSize: 30,
                           fontWeight: FontWeight.w800,
-                          color: Colors.black, // Teks warna hitam sesuai instruksi
+                          color: Colors.white, // Dikembalikan ke putih
                           letterSpacing: -0.5,
                         ),
                       ),
@@ -93,7 +134,7 @@ class _SplashPageState extends State<SplashPage> {
                           fontFamily: 'PlusJakartaSans',
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black,
+                          color: Colors.white, // Dikembalikan ke putih
                           letterSpacing: 3,
                         ),
                       ),
@@ -104,7 +145,7 @@ class _SplashPageState extends State<SplashPage> {
                         style: TextStyle(
                           fontFamily: 'PlusJakartaSans',
                           fontSize: 15,
-                          color: Colors.black,
+                          color: Colors.white, // Dikembalikan ke putih
                           height: 1.5,
                         ),
                       ),
@@ -127,7 +168,7 @@ class _SplashPageState extends State<SplashPage> {
                                   fontFamily: 'PlusJakartaSans',
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.black, // Teks hitam
+                                  color: Colors.black, // Teks hitam untuk button ini
                                 ),
                               ),
                             ),
@@ -150,7 +191,7 @@ class _SplashPageState extends State<SplashPage> {
                                   fontFamily: 'PlusJakartaSans',
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.black, // Teks hitam
+                                  color: Colors.white, // Teks putih sesuai instruksi
                                 ),
                               ),
                             ),
