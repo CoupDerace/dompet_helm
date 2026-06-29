@@ -54,7 +54,7 @@ class _SplashPageState extends State<SplashPage> {
                       shape: BoxShape.circle,
                       gradient: RadialGradient(
                         colors: [
-                          AppColors.primary.withValues(alpha: 0.15),
+                          AppColors.primary.withValues(alpha: 0.45),
                           Colors.transparent,
                         ],
                       ),
@@ -71,7 +71,7 @@ class _SplashPageState extends State<SplashPage> {
                       shape: BoxShape.circle,
                       gradient: RadialGradient(
                         colors: [
-                          AppColors.primary.withValues(alpha: 0.10),
+                          AppColors.primary.withValues(alpha: 0.35),
                           Colors.transparent,
                         ],
                       ),
@@ -83,13 +83,13 @@ class _SplashPageState extends State<SplashPage> {
                   top: 80,
                   left: -40,
                   child: Container(
-                    width: 120,
-                    height: 120,
+                    width: 140,
+                    height: 140,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: AppColors.white.withValues(alpha: 0.3),
-                        width: 2,
+                        color: AppColors.white.withValues(alpha: 0.7),
+                        width: 3,
                       ),
                     ),
                   ),
@@ -98,13 +98,13 @@ class _SplashPageState extends State<SplashPage> {
                   bottom: 250,
                   right: -50,
                   child: Container(
-                    width: 180,
-                    height: 180,
+                    width: 200,
+                    height: 200,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: AppColors.primary.withValues(alpha: 0.2),
-                        width: 1,
+                        color: AppColors.primary.withValues(alpha: 0.5),
+                        width: 2.5,
                       ),
                     ),
                   ),
