@@ -37,69 +37,138 @@ class _HomePageState extends State<HomePage> {
         final fullName = user?.name ?? 'User';
 
         return Scaffold(
-          backgroundColor: AppColors.bg,
-          body: BlocBuilder<AccountBloc, AccountState>(
-            builder: (context, accountState) {
-              final balance = accountState is AccountLoaded ? accountState.account.balance : 0.0;
-              final txns =
-                  accountState is AccountLoaded ? accountState.transactions : <TransactionEntity>[];
-              final loading = accountState is AccountLoading;
+          backgroundColor: Colors.transparent,
+          body: Container(
+            decoration: BoxDecoration(
+              color: AppColors.bg,
+              image: const DecorationImage(
+                image: AssetImage('assets/images/mega_mendung.png'),
+                fit: BoxFit.cover,
+                opacity: 0.25,
+              ),
+            ),
+            child: Stack(
+              children: [
+                // Glowing Ambient Motif
+                Positioned(
+                  top: -150,
+                  right: -100,
+                  child: Container(
+                    width: 400,
+                    height: 400,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: RadialGradient(
+                        colors: [
+                          AppColors.primary.withValues(alpha: 0.6),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: -100,
+                  left: -150,
+                  child: Container(
+                    width: 500,
+                    height: 500,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: RadialGradient(
+                        colors: [
+                          AppColors.primary.withValues(alpha: 0.5),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                BlocBuilder<AccountBloc, AccountState>(
+                  builder: (context, accountState) {
+                    final balance = accountState is AccountLoaded
+                        ? accountState.account.balance
+                        : 0.0;
+                    final txns = accountState is AccountLoaded
+                        ? accountState.transactions
+                        : <TransactionEntity>[];
+                    final loading = accountState is AccountLoading;
 
-              return RefreshIndicator(
-                onRefresh: () async => context.read<AccountBloc>().add(AccountRefreshRequested()),
-                color: AppColors.primary,
-                child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: Column(
-                    children: [
-                      // Gradient header
-                      _buildHeader(fullName, firstName, balance, loading),
-                      
-                      // Body - grouped for translation
-                      Transform.translate(
-                        offset: const Offset(0, -32),
+                    return RefreshIndicator(
+                      onRefresh: () async => context.read<AccountBloc>().add(
+                        AccountRefreshRequested(),
+                      ),
+                      color: AppColors.primary,
+                      child: SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
                         child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
-                              child: _buildMainActions(),
+                            // Gradient header
+                            _buildHeader(fullName, firstName, balance, loading),
+
+                            // Body - grouped for translation
+                            Transform.translate(
+                              offset: const Offset(0, -32),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                    ),
+                                    child: _buildMainActions(),
+                                  ),
+                                  const SizedBox(height: 24),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                    ),
+                                    child: _buildFeatureGrid(),
+                                  ),
+                                  const SizedBox(height: 24),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                    ),
+                                    child: _buildPointsRow(),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                    ),
+                                    child: _buildDeeplinkBanner(),
+                                  ),
+                                  const SizedBox(height: 24),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                    ),
+                                    child: _buildTransactions(txns),
+                                  ),
+                                  const SizedBox(height: 24),
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 24),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
-                              child: _buildFeatureGrid(),
-                            ),
-                            const SizedBox(height: 24),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
-                              child: _buildPointsRow(),
-                            ),
-                            const SizedBox(height: 16),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
-                              child: _buildDeeplinkBanner(),
-                            ),
-                            const SizedBox(height: 24),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
-                              child: _buildTransactions(txns),
-                            ),
-                            const SizedBox(height: 24),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
-              );
-            },
+              ],
+            ),
           ),
         );
       },
     );
   }
 
-  Widget _buildHeader(String fullName, String firstName, double balance, bool loading) {
+  Widget _buildHeader(
+    String fullName,
+    String firstName,
+    double balance,
+    bool loading,
+  ) {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -109,7 +178,12 @@ class _HomePageState extends State<HomePage> {
           bottomRight: Radius.circular(36),
         ),
       ),
-      padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).padding.top + 20, 20, 68),
+      padding: EdgeInsets.fromLTRB(
+        20,
+        MediaQuery.of(context).padding.top + 20,
+        20,
+        68,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -135,7 +209,11 @@ class _HomePageState extends State<HomePage> {
                       color: AppColors.white.withValues(alpha: 0.18),
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Icon(Icons.notifications_outlined, size: 20, color: Colors.white),
+                    child: const Icon(
+                      Icons.notifications_outlined,
+                      size: 20,
+                      color: Colors.white,
+                    ),
                   ),
                   Positioned(
                     top: 10,
@@ -158,47 +236,56 @@ class _HomePageState extends State<HomePage> {
           Row(
             children: [
               AppAvatar(
-                  name: fullName,
-                  size: 48,
-                  bg: Colors.white.withValues(alpha: 0.25)),
+                name: fullName,
+                size: 48,
+                bg: Colors.white.withValues(alpha: 0.25),
+              ),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Selamat datang,',
-                        style: TextStyle(
-                          fontFamily: 'PlusJakartaSans',
-                          fontSize: 13,
-                          color: Colors.white70,
-                        )),
-                    Text(firstName,
-                        style: const TextStyle(
-                          fontFamily: 'PlusJakartaSans',
-                          fontSize: 17,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                          letterSpacing: -0.2,
-                        )),
+                    const Text(
+                      'Selamat datang,',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 13,
+                        color: Colors.white70,
+                      ),
+                    ),
+                    Text(
+                      firstName,
+                      style: const TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 17,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        letterSpacing: -0.2,
+                      ),
+                    ),
                   ],
                 ),
               ),
             ],
           ),
           const SizedBox(height: 32),
-          const Text('Total Saldo',
-              style: TextStyle(
-                fontFamily: 'PlusJakartaSans',
-                fontSize: 13.5,
-                color: Colors.white70,
-                fontWeight: FontWeight.w600,
-              )),
+          const Text(
+            'Total Saldo',
+            style: TextStyle(
+              fontFamily: 'PlusJakartaSans',
+              fontSize: 13.5,
+              color: Colors.white70,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           const SizedBox(height: 4),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                _hideBalance ? CurrencyFormatter.maskBalance() : CurrencyFormatter.format(balance),
+                _hideBalance
+                    ? CurrencyFormatter.maskBalance()
+                    : CurrencyFormatter.format(balance),
                 style: const TextStyle(
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 36,
@@ -217,7 +304,9 @@ class _HomePageState extends State<HomePage> {
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
-                    _hideBalance ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                    _hideBalance
+                        ? Icons.visibility_off_rounded
+                        : Icons.visibility_rounded,
                     size: 20,
                     color: Colors.white,
                   ),
@@ -232,10 +321,30 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildMainActions() {
     final actions = [
-      {'icon': Icons.north_rounded, 'label': 'Top Up', 'tone': 'blue', 'route': '/topup'},
-      {'icon': Icons.send_rounded, 'label': 'Transfer', 'tone': 'green', 'route': '/transfer'},
-      {'icon': Icons.qr_code_rounded, 'label': 'Bayar', 'tone': 'violet', 'route': '/payment'},
-      {'icon': Icons.south_rounded, 'label': 'Tarik', 'tone': 'amber', 'route': '/topup'},
+      {
+        'icon': Icons.north_rounded,
+        'label': 'Top Up',
+        'tone': 'blue',
+        'route': '/topup',
+      },
+      {
+        'icon': Icons.send_rounded,
+        'label': 'Transfer',
+        'tone': 'green',
+        'route': '/transfer',
+      },
+      {
+        'icon': Icons.qr_code_rounded,
+        'label': 'Bayar',
+        'tone': 'violet',
+        'route': '/payment',
+      },
+      {
+        'icon': Icons.south_rounded,
+        'label': 'Tarik',
+        'tone': 'amber',
+        'route': '/topup',
+      },
     ];
 
     return Container(
@@ -259,13 +368,15 @@ class _HomePageState extends State<HomePage> {
                     iconSize: 26,
                   ),
                   const SizedBox(height: 10),
-                  Text(a['label'] as String,
-                      style: const TextStyle(
-                        fontFamily: 'PlusJakartaSans',
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.ink,
-                      )),
+                  Text(
+                    a['label'] as String,
+                    style: const TextStyle(
+                      fontFamily: 'PlusJakartaSans',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.ink,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -283,7 +394,11 @@ class _HomePageState extends State<HomePage> {
       {'icon': Icons.receipt_long_outlined, 'label': 'UKT', 'tone': 'violet'},
       {'icon': Icons.wifi_rounded, 'label': 'Paket Data', 'tone': 'green'},
       {'icon': Icons.card_giftcard_rounded, 'label': 'Voucher', 'tone': 'red'},
-      {'icon': Icons.favorite_outline_rounded, 'label': 'Donasi', 'tone': 'amber'},
+      {
+        'icon': Icons.favorite_outline_rounded,
+        'label': 'Donasi',
+        'tone': 'amber',
+      },
       {'icon': Icons.more_horiz_rounded, 'label': 'Lainnya', 'tone': 'slate'},
     ];
 
@@ -308,16 +423,22 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FeatureIcon(
-                    icon: f['icon'] as IconData, tone: f['tone'] as String, size: 46, iconSize: 22),
+                  icon: f['icon'] as IconData,
+                  tone: f['tone'] as String,
+                  size: 46,
+                  iconSize: 22,
+                ),
                 const SizedBox(height: 10),
-                Text(f['label'] as String,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontFamily: 'PlusJakartaSans',
-                      fontSize: 12.5,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.slate400,
-                    )),
+                Text(
+                  f['label'] as String,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontFamily: 'PlusJakartaSans',
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.slate400,
+                  ),
+                ),
               ],
             ),
           ),
@@ -340,24 +461,34 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 const FeatureIcon(
-                    icon: Icons.star_outline_rounded, tone: 'amber', size: 40, iconSize: 20),
+                  icon: Icons.star_outline_rounded,
+                  tone: 'amber',
+                  size: 40,
+                  iconSize: 20,
+                ),
                 const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    Text('Poin Kampus',
-                        style: TextStyle(
-                            fontFamily: 'PlusJakartaSans',
-                            fontSize: 12,
-                            color: AppColors.slate500,
-                            fontWeight: FontWeight.w600)),
+                    Text(
+                      'Poin Kampus',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 12,
+                        color: AppColors.slate500,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     SizedBox(height: 2),
-                    Text('1.250',
-                        style: TextStyle(
-                            fontFamily: 'PlusJakartaSans',
-                            fontSize: 15.5,
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.ink)),
+                    Text(
+                      '1.250',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w800,
+                        color: AppColors.ink,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -376,24 +507,34 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 const FeatureIcon(
-                    icon: Icons.qr_code_rounded, tone: 'green', size: 40, iconSize: 20),
+                  icon: Icons.qr_code_rounded,
+                  tone: 'green',
+                  size: 40,
+                  iconSize: 20,
+                ),
                 const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    Text('KTM Digital',
-                        style: TextStyle(
-                            fontFamily: 'PlusJakartaSans',
-                            fontSize: 12,
-                            color: AppColors.slate500,
-                            fontWeight: FontWeight.w600)),
+                    Text(
+                      'KTM Digital',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 12,
+                        color: AppColors.slate500,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     SizedBox(height: 2),
-                    Text('Aktif',
-                        style: TextStyle(
-                            fontFamily: 'PlusJakartaSans',
-                            fontSize: 15.5,
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.ink)),
+                    Text(
+                      'Aktif',
+                      style: TextStyle(
+                        fontFamily: 'PlusJakartaSans',
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w800,
+                        color: AppColors.ink,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -427,7 +568,11 @@ class _HomePageState extends State<HomePage> {
                 color: AppColors.white.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: const Icon(Icons.link_rounded, size: 24, color: Colors.white),
+              child: const Icon(
+                Icons.link_rounded,
+                size: 24,
+                color: Colors.white,
+              ),
             ),
             const SizedBox(width: 16),
             const Expanded(
@@ -435,24 +580,32 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Coba bayar dari toko online',
-                      style: TextStyle(
-                        fontFamily: 'PlusJakartaSans',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      )),
+                  Text(
+                    'Coba bayar dari toko online',
+                    style: TextStyle(
+                      fontFamily: 'PlusJakartaSans',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
                   SizedBox(height: 4),
-                  Text('Simulasi checkout via DKG',
-                      style: TextStyle(
-                        fontFamily: 'PlusJakartaSans',
-                        fontSize: 13,
-                        color: Colors.white70,
-                      )),
+                  Text(
+                    'Simulasi checkout via DKG',
+                    style: TextStyle(
+                      fontFamily: 'PlusJakartaSans',
+                      fontSize: 13,
+                      color: Colors.white70,
+                    ),
+                  ),
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right_rounded, size: 22, color: Colors.white),
+            const Icon(
+              Icons.chevron_right_rounded,
+              size: 22,
+              color: Colors.white,
+            ),
           ],
         ),
       ),
@@ -465,22 +618,26 @@ class _HomePageState extends State<HomePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Transaksi terakhir',
-                style: TextStyle(
-                  fontFamily: 'PlusJakartaSans',
-                  fontSize: 16.5,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.ink,
-                )),
+            const Text(
+              'Transaksi terakhir',
+              style: TextStyle(
+                fontFamily: 'PlusJakartaSans',
+                fontSize: 16.5,
+                fontWeight: FontWeight.w700,
+                color: AppColors.ink,
+              ),
+            ),
             GestureDetector(
               onTap: () => context.go('/history'),
-              child: const Text('Lihat semua',
-                  style: TextStyle(
-                    fontFamily: 'PlusJakartaSans',
-                    color: AppColors.primary,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                  )),
+              child: const Text(
+                'Lihat semua',
+                style: TextStyle(
+                  fontFamily: 'PlusJakartaSans',
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                ),
+              ),
             ),
           ],
         ),
@@ -498,18 +655,24 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Image.asset('assets/images/empty_tx.png', height: 110),
                       const SizedBox(height: 16),
-                      const Text('Belum ada transaksi',
-                          style: TextStyle(
-                              color: AppColors.slate500,
-                              fontSize: 15,
-                              fontFamily: 'PlusJakartaSans',
-                              fontWeight: FontWeight.w700)),
+                      const Text(
+                        'Belum ada transaksi',
+                        style: TextStyle(
+                          color: AppColors.slate500,
+                          fontSize: 15,
+                          fontFamily: 'PlusJakartaSans',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                       const SizedBox(height: 4),
-                      const Text('Lakukan transaksi pertamamu sekarang',
-                          style: TextStyle(
-                              color: AppColors.slate400,
-                              fontSize: 13,
-                              fontFamily: 'PlusJakartaSans')),
+                      const Text(
+                        'Lakukan transaksi pertamamu sekarang',
+                        style: TextStyle(
+                          color: AppColors.slate400,
+                          fontSize: 13,
+                          fontFamily: 'PlusJakartaSans',
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -519,7 +682,9 @@ class _HomePageState extends State<HomePage> {
                       .toList()
                       .asMap()
                       .entries
-                      .map((e) => TransactionRow(txn: e.value, divider: e.key > 0))
+                      .map(
+                        (e) => TransactionRow(txn: e.value, divider: e.key > 0),
+                      )
                       .toList(),
                 ),
         ),
