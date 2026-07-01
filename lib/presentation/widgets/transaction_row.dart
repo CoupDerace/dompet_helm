@@ -77,15 +77,22 @@ class TransactionRow extends StatelessWidget {
 
   (IconData, String) _resolveIcon(String desc) {
     final d = desc.toLowerCase();
-    if (d.contains('top up') || d.contains('topup'))
-      return (DkgIcons.topup, 'blue');
-    if (d.contains('transfer')) return (DkgIcons.send, 'green');
-    if (d.contains('qris') || d.contains('bayar'))
-      return (DkgIcons.qris, 'violet');
-    if (d.contains('pulsa')) return (DkgIcons.pulsa, 'blue');
-    if (d.contains('tokobel') || d.contains('toko'))
-      return (DkgIcons.store, 'amber');
-    return (DkgIcons.wallet, 'slate');
+    if (d.contains('top up') || d.contains('topup')) {
+      return (Icons.account_balance_wallet_outlined, 'amber');
+    }
+    if (d.contains('transfer')) {
+      return (Icons.swap_horiz_rounded, 'amber');
+    }
+    if (d.contains('qris') || d.contains('bayar')) {
+      return (Icons.qr_code_scanner_rounded, 'amber');
+    }
+    if (d.contains('pulsa')) {
+      return (Icons.smartphone_outlined, 'amber');
+    }
+    if (d.contains('tokobel') || d.contains('toko') || d.contains('order')) {
+      return (Icons.receipt_long_outlined, 'amber');
+    }
+    return (Icons.account_balance_wallet_outlined, 'amber');
   }
 
   String _formatDate(DateTime dt) {

@@ -112,7 +112,7 @@ class AccountPage extends StatelessWidget {
                           children: [
                             _Row(
                               icon: Icons.verified_user_outlined,
-                              tone: 'green',
+                              tone: 'amber',
                               title: 'Verifikasi 2 langkah (2FA)',
                               subtitle: 'Aktif · Email OTP',
                               onTap: () => context.go('/setup-2fa'),
@@ -121,7 +121,7 @@ class AccountPage extends StatelessWidget {
                             const Divider(height: 1, indent: 56, color: AppColors.line2),
                             _Row(
                               icon: Icons.lock_outline_rounded,
-                              tone: 'blue',
+                              tone: 'amber',
                               title: 'Ubah PIN keamanan',
                               subtitle: 'Terakhir diubah 2 bln lalu',
                               onTap: () {},
@@ -129,7 +129,7 @@ class AccountPage extends StatelessWidget {
                             const Divider(height: 1, indent: 56, color: AppColors.line2),
                             _Row(
                               icon: Icons.fingerprint_rounded,
-                              tone: 'violet',
+                              tone: 'amber',
                               title: 'Login biometrik',
                               subtitle: 'Sidik jari',
                               onTap: () {},
@@ -157,11 +157,11 @@ class AccountPage extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            _Row(icon: Icons.person_outline_rounded, tone: 'blue', title: 'Data pribadi', onTap: () {}),
+                            _Row(icon: Icons.person_outline_rounded, tone: 'amber', title: 'Data pribadi', onTap: () {}),
                             const Divider(height: 1, indent: 56, color: AppColors.line2),
-                            _Row(icon: Icons.account_balance_outlined, tone: 'green', title: 'Rekening & kartu tersimpan', onTap: () {}),
+                            _Row(icon: Icons.account_balance_outlined, tone: 'amber', title: 'Rekening & kartu tersimpan', onTap: () {}),
                             const Divider(height: 1, indent: 56, color: AppColors.line2),
-                            _Row(icon: Icons.settings_outlined, tone: 'slate', title: 'Pengaturan aplikasi', onTap: () {}),
+                            _Row(icon: Icons.settings_outlined, tone: 'amber', title: 'Pengaturan aplikasi', onTap: () {}),
                           ],
                         ),
                       ),
@@ -194,7 +194,7 @@ class AccountPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       const Center(
-                        child: Text('Dompet Kampus Global · v1.0.0',
+                        child: Text('Helmet Wallet · v1.0.0',
                             style: TextStyle(
                               fontFamily: 'PlusJakartaSans',
                               fontSize: 12,

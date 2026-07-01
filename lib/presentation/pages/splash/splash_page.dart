@@ -59,7 +59,7 @@ class _SplashPageState extends State<SplashPage> {
                       const AppLogo(size: 92, light: true),
                       const SizedBox(height: 26),
                       const Text(
-                        'Dompet Kampus',
+                        'Helmet Wallet',
                         style: TextStyle(
                           fontFamily: 'PlusJakartaSans',
                           fontSize: 30,
@@ -68,17 +68,7 @@ class _SplashPageState extends State<SplashPage> {
                           letterSpacing: -0.5,
                         ),
                       ),
-                      const SizedBox(height: 2),
-                      const Text(
-                        'GLOBAL',
-                        style: TextStyle(
-                          fontFamily: 'PlusJakartaSans',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white, // Dikembalikan ke putih
-                          letterSpacing: 3,
-                        ),
-                      ),
+
                       const SizedBox(height: 16),
                       const Text(
                         'Bayar, transfer, dan kelola uang kuliah\ndalam satu aplikasi yang aman.',

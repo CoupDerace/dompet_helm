@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../domain/entities/transaction_entity.dart';
@@ -40,8 +40,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.transparent,
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppColors
-                  .primaryGradient, // Background utama menjadi amber gradient
+              color: AppColors.bg,
             ),
             child: BlocBuilder<AccountBloc, AccountState>(
               builder: (context, accountState) {
@@ -105,41 +104,7 @@ class _HomePageState extends State<HomePage> {
                                 child: _buildTransactions(txns),
                               ),
                               const SizedBox(height: 24),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: _buildMainActions(),
-                              ),
-                              const SizedBox(height: 24),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: _buildFeatureGrid(),
-                              ),
-                              const SizedBox(height: 24),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: _buildPointsRow(),
-                              ),
-                              const SizedBox(height: 16),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: _buildDeeplinkBanner(),
-                              ),
-                              const SizedBox(height: 24),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: _buildTransactions(txns),
-                              ),
-                              const SizedBox(height: 24),
+
                             ],
                           ),
                         ),
@@ -161,34 +126,57 @@ class _HomePageState extends State<HomePage> {
     double balance,
     bool loading,
   ) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.bg,
-        image: const DecorationImage(
-          image: AssetImage('assets/images/mega_mendung.png'),
-          fit: BoxFit.cover,
-          opacity: 0.25,
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(36),
+              bottomRight: Radius.circular(36),
+            ),
+            child: Container(
+              color: AppColors.bg,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.asset(
+                    'assets/images/mega_mendung.png',
+                    fit: BoxFit.cover,
+                    opacity: const AlwaysStoppedAnimation(0.25),
+                  ),
+                  Positioned(
+                    right: -30,
+                    top: -20,
+                    child: Transform.rotate(
+                      angle: -0.25,
+                      child: Icon(
+                        Icons.sports_motorsports_rounded,
+                        color: AppColors.amber.withValues(alpha: 0.15),
+                        size: 260,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(36),
-          bottomRight: Radius.circular(36),
-        ),
-      ),
-      padding: EdgeInsets.fromLTRB(
-        20,
-        MediaQuery.of(context).padding.top + 20,
-        20,
-        68,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.fromLTRB(
+            20,
+            MediaQuery.of(context).padding.top + 12,
+            20,
+            68,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                'Global Institute Pay',
+                'Helmet Wallet',
                 style: TextStyle(
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 18,
@@ -229,7 +217,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          const SizedBox(height: 28),
+          const SizedBox(height: 8),
           Row(
             children: [
               AppAvatar(
@@ -265,7 +253,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 12),
           const Text(
             'Total Saldo',
             style: TextStyle(
@@ -313,31 +301,33 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-    );
-  }
+    ),
+  ],
+);
+}
 
   Widget _buildMainActions() {
     final actions = [
       {
-        'icon': Icons.north_rounded,
+        'icon': Icons.account_balance_wallet_outlined,
         'label': 'Top Up',
-        'tone': 'blue',
+        'tone': 'amber',
         'route': '/topup',
       },
       {
-        'icon': Icons.send_rounded,
+        'icon': Icons.swap_horiz_rounded,
         'label': 'Transfer',
-        'tone': 'green',
+        'tone': 'amber',
         'route': '/transfer',
       },
       {
-        'icon': Icons.qr_code_rounded,
+        'icon': Icons.qr_code_scanner_rounded,
         'label': 'Bayar',
-        'tone': 'violet',
+        'tone': 'amber',
         'route': '/payment',
       },
       {
-        'icon': Icons.south_rounded,
+        'icon': Icons.payments_outlined,
         'label': 'Tarik',
         'tone': 'amber',
         'route': '/topup',
@@ -385,18 +375,14 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildFeatureGrid() {
     final features = [
-      {'icon': Icons.smartphone_outlined, 'label': 'Pulsa', 'tone': 'blue'},
-      {'icon': Icons.bolt_outlined, 'label': 'PLN', 'tone': 'amber'},
-      {'icon': Icons.restaurant_outlined, 'label': 'Kantin', 'tone': 'red'},
-      {'icon': Icons.receipt_long_outlined, 'label': 'UKT', 'tone': 'violet'},
-      {'icon': Icons.wifi_rounded, 'label': 'Paket Data', 'tone': 'green'},
-      {'icon': Icons.card_giftcard_rounded, 'label': 'Voucher', 'tone': 'red'},
-      {
-        'icon': Icons.favorite_outline_rounded,
-        'label': 'Donasi',
-        'tone': 'amber',
-      },
-      {'icon': Icons.more_horiz_rounded, 'label': 'Lainnya', 'tone': 'slate'},
+      {'icon': Icons.local_parking_rounded, 'label': 'Parkir', 'tone': 'amber'},
+      {'icon': Icons.local_gas_station_rounded, 'label': 'Bensin', 'tone': 'amber'},
+      {'icon': Icons.handyman_rounded, 'label': 'Servis', 'tone': 'amber'},
+      {'icon': Icons.local_car_wash_rounded, 'label': 'Cuci Motor', 'tone': 'amber'},
+      {'icon': Icons.health_and_safety_outlined, 'label': 'Asuransi', 'tone': 'amber'},
+      {'icon': Icons.two_wheeler_rounded, 'label': 'Apparel', 'tone': 'amber'},
+      {'icon': Icons.toll_rounded, 'label': 'E-Toll', 'tone': 'amber'},
+      {'icon': Icons.more_horiz_rounded, 'label': 'Lainnya', 'tone': 'amber'},
     ];
 
     return GridView.count(
@@ -468,7 +454,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      'Poin Kampus',
+                      'Helmet Poin',
                       style: TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 12,
@@ -504,8 +490,8 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 const FeatureIcon(
-                  icon: Icons.qr_code_rounded,
-                  tone: 'green',
+                  icon: Icons.badge_outlined,
+                  tone: 'amber',
                   size: 40,
                   iconSize: 20,
                 ),
@@ -514,7 +500,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      'KTM Digital',
+                      'SIM Digital',
                       style: TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 12,

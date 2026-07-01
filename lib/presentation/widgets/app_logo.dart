@@ -13,7 +13,7 @@ class AppLogo extends StatelessWidget {
     const fontFamily = 'PlusJakartaSans';
 
     Widget icon = Image.asset(
-      'assets/images/new_logo.png',
+      'assets/icons/icon_helm_3d.png',
       width: size,
       height: size,
       fit: BoxFit.contain,
@@ -31,7 +31,7 @@ class AppLogo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Dompet Kampus',
+              'HELMET',
               style: TextStyle(
                 fontFamily: fontFamily,
                 fontSize: size * 0.3,
@@ -42,7 +42,7 @@ class AppLogo extends StatelessWidget {
               ),
             ),
             Text(
-              'GLOBAL',
+              'WALLET',
               style: TextStyle(
                 fontFamily: fontFamily,
                 fontSize: size * 0.205,

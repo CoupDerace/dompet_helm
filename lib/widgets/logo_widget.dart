@@ -8,7 +8,7 @@ class LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      'assets/images/logo.svg',
+      'assets/icons/icon_helm.svg',
       width: size,
       height: size,
       fit: BoxFit.contain,
