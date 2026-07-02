@@ -6,7 +6,7 @@
  * TI SE 23 P1
  * Teknik Informatika
  * Software Engineering   
- * [Link-Youtube-presentation](   )
+ * [Link-Youtube-presentation](https://youtu.be/eaOdBzlhGT8?si=hcxhMzmdavuXZM4F)
 
 ## Deskripsi Aplikasi
 Dompet Helm adalah aplikasi mobile berbasis Flutter yang berfungsi sebagai dompet digital (e-wallet). Aplikasi ini dilengkapi dengan berbagai fitur modern seperti autentikasi melalui Firebase, pemindai QR Code untuk transaksi yang cepat, serta dukungan deep link.
